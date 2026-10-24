@@ -24,7 +24,7 @@
 
 ## 四个别「顺手优化」掉的地方
 
-  1. **千问 `max_tokens=180`**：六年级口语陪练只回一两句；给多了它会开始整段讲课文，
+  1. **千问 `max_tokens=180`**：三年级口语陪练只回一两句；给多了它会开始整段讲课文，
      孩子还没听懂上一句，屏幕已经滚过去三行。
   2. **腾讯智聆签名要对「原始值」排序后 HMAC-SHA1**，签完再做 URL 编码。
      先编码再签名 100% 报签名错误，且报错信息不会告诉你是这里错了。
@@ -86,8 +86,9 @@ DATA_URI_RE = re.compile(r"^data:([^;]+);base64,(.+)$", re.S)
 
 TUTOR_PROMPT = (
     "You are Nono's friendly British English speaking partner. Nono is a Chinese "
-    "sixth-grade learner using the 2026 Yilin Press textbook. Use CEFR A1-A2 "
-    "vocabulary. Ask only one question at a time. Reply in one or two short "
+    "third-grade learner using the 2024 Yilin Press textbook. Use very simple "
+    "CEFR pre-A1/A1 vocabulary (greetings, names, family, numbers, colours). "
+    "Ask only one question at a time. Reply in one or two short "
     "sentences. Keep the conversation mainly in English. If Nono is stuck, give one "
     "short Chinese hint. Correct at most one grammar or word-choice issue per turn, "
     "gently. Do not score pronunciation; pronunciation is assessed by a separate "
@@ -456,10 +457,10 @@ def _openai_transcribe(audio_uri: str) -> str:
     body, ctype = _multipart(
         fields=[
             ("model", config.OPENAI_TRANSCRIBE_MODEL),
-            # prompt 用来把识别结果往「六年级教材话题」上锚一下，
+            # prompt 用来把识别结果往「三年级教材话题」上锚一下，
             # 否则孩子说 Chinese-style English 时会被转成毫不相干的词。
-            ("prompt", "A sixth-grade English learner discussing honesty, helping others, "
-                       "great people, city life, the environment, and daily routines."),
+            ("prompt", "A third-grade English learner discussing greetings, names, friends, "
+                       "family, birthdays, numbers 1-10, and simple daily routines."),
         ],
         files=[("file", "speech." + ext, mime, blob)],
     )

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="苏教译林六年级上册英语家庭学习原型" />
+  <meta name="description" content="苏教译林三年级上册英语家庭学习原型" />
   <title>诺诺英语学习屋</title>
   <script>if(new URLSearchParams(location.search).get('embed')==='tablet')document.documentElement.classList.add('tablet-embed')</script>
   <link rel="stylesheet" href="styles.css?v=curriculum-20261023-2" />
@@ -11,7 +11,7 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="brand"><span class="brand-mark">N</span><div><strong>诺诺英语</strong><small>六年级 · 上册 · <span id="buildVer">v?</span></small></div></div>
+      <div class="brand"><span class="brand-mark">N</span><div><strong>诺诺英语</strong><small>三年级 · 上册 · <span id="buildVer">v?</span></small></div></div>
       <nav aria-label="主要导航">
         <button class="nav-item active" data-view="today"><span>⌂</span>今日学习</button>
         <button class="nav-item" data-view="course"><span>▤</span>同步课程</button>
@@ -31,7 +31,7 @@
       <header class="topbar">
         <button id="menuButton" class="menu-button" aria-label="打开菜单">☰</button>
         <div><p id="dateLabel"></p><h1 id="pageTitle">下午好，诺诺 👋</h1></div>
-        <div class="profile"><div><strong>六年级</strong><small>本周 68 分钟</small></div><span>诺</span></div>
+        <div class="profile"><div><strong>三年级</strong><small>本周 68 分钟</small></div><span>诺</span></div>
       </header>
 
       <section id="today" class="view active">
@@ -55,14 +55,14 @@
       </section>
 
       <section id="course" class="view">
-        <div class="section-heading"><div><span class="eyebrow">教材同步</span><h2>六年级上册</h2></div><span class="muted" id="courseHint">…</span></div>
+        <div class="section-heading"><div><span class="eyebrow">教材同步</span><h2>三年级上册</h2></div><span class="muted" id="courseHint">…</span></div>
         <div id="unitList" class="unit-list"></div>
         <article class="lesson-panel">
           <div class="lesson-copy"><span class="eyebrow" id="lessonEyebrow">STORY TIME</span><h2 id="lessonTitle">…</h2><p id="lessonCopy">…</p><div class="dialogue" id="lessonDialogue"></div><div class="lesson-actions"><button class="primary" id="speakStory">▶ 播放示范</button><button class="secondary" id="finishStory">标记已跟读</button></div></div>
           <div class="question-card"><small>BIG QUESTION</small><strong id="bigQuestionText">…</strong><span id="bigQuestionNote"></span></div>
         </article>
         <article class="audio-library">
-          <div><span class="eyebrow">课课练配套音频</span><h2>8个单元 · 40段录音</h2><p>选择课时或单元检测，原音频将直接从家庭服务器播放。</p></div>
+          <div><span class="eyebrow">课课练配套音频</span><h2>音频整理中</h2><p>三年级配套音频待替换（原六年级 40 段已随教材更换移除）。示范发音请用各任务的「播放示范」按钮。</p></div>
           <div class="audio-controls"><select id="audioTrack" aria-label="选择课时音频"></select><audio id="courseAudio" controls preload="metadata"></audio></div>
         </article>
       </section>

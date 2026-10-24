@@ -97,7 +97,7 @@ private const val FALLBACK_SENTENCE = "You should tell the truth and admit your 
 /**
  * 对话空状态里推荐的三个问题。
  *
- * 挑的都是「六年级能听懂、一句话就能答」的，而且**不带中文** ——
+ * 挑的都是「三年级能听懂、一句话就能答」的，而且**不带中文** ——
  * 混中文会让千问也用中文回，孩子听到的就不是英文输入了。
  */
 private val CHAT_SUGGESTIONS = listOf(
@@ -212,7 +212,7 @@ fun EnglishScreen(
             }
             Column(Modifier.padding(start = 10.dp)) {
                 Text("英语学习", color = Color.White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                Text("六年级上册", color = Color.White.copy(alpha = .66f), style = MaterialTheme.typography.bodySmall)
+                Text("三年级上册", color = Color.White.copy(alpha = .66f), style = MaterialTheme.typography.bodySmall)
             }
         }
 

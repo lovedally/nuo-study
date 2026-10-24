@@ -11,7 +11,7 @@
  *     —— 后者在安卓平板上常常没有英式音库，听起来是美音甚至机器腔。
  */
 const STORE_KEY = 'nuonuoState';
-const FALLBACK_UNITS = [{ unit: 1, title: 'Try your best', words: [], quiz: [], sentences: [], passage: { lines: [] } }];
+const FALLBACK_UNITS = [{ unit: 1, title: 'Hello!', words: [], quiz: [], sentences: [], passage: { lines: [] } }];
 
 let CURR = { units: [] };
 let unitNo = 1;
@@ -491,20 +491,28 @@ async function checkServices() {
   }
 }
 
-/* 课课练配套音频：40 段 = 8 单元 × 5 课时（第 5 段是单元检测）。
+/* 课课练配套音频。
  *
- * 这个映射**不是猜的**：2026-10-23 用服务端 ASR 逐段听过 —— track-01 开头就是
- * "Unit 1, Period 1"，track-06 → Unit 2，track-11 → Unit 3，track-16 → Unit 4，
- * track-21 → Unit 5，步长正好 5。所以 n → 单元 = ceil(n/5)、课时 = (n-1)%5+1 是可靠的。
- * 换成别的教材/别的音频包时**必须重新验一遍**，否则孩子点开听到的是别的单元。
+ * 三年级版（2026-10 改造）：六年级的 40 段课课练音频已随教材更换移除。
+ * 找到三年级配套音频后：按 track-NN.mp3 命名放回 web/english/audio/，
+ * 恢复下面的 length 与每单元课时数，并且**必须用服务端 ASR 逐段重验单元映射**
+ * （原六年级映射是 track-01 = "Unit 1, Period 1"、步长 5 —— 换音频包不能沿用）。
  */
+const AUDIO_TRACK_COUNT = 0; // 0 = 音频库暂不可用（界面显示「整理中」）
+
 function renderAudio() {
   const sel = $('#audioTrack');
   if (!sel || sel.dataset.ready === '1') return;
-  const tracks = Array.from({ length: 40 }, (_, i) => {
-    const n = i + 1, u = Math.ceil(n / 5), p = ((n - 1) % 5) + 1;
+  if (!AUDIO_TRACK_COUNT) {
+    sel.innerHTML = '<option>配套音频整理中，先用「播放示范」听 TTS</option>';
+    sel.disabled = true;
+    return;
+  }
+  const per = 5;
+  const tracks = Array.from({ length: AUDIO_TRACK_COUNT }, (_, i) => {
+    const n = i + 1, u = Math.ceil(n / per), p = ((n - 1) % per) + 1;
     const unit = CURR.units.find(x => x.unit === u);
-    const name = p === 5 ? `Unit ${u} · 单元检测` : `Unit ${u} · Period ${p}`;
+    const name = p === per ? `Unit ${u} · 单元检测` : `Unit ${u} · Period ${p}`;
     return {
       file: `audio/track-${String(n).padStart(2, '0')}.mp3`,
       label: unit && unit.title ? `${name} · ${unit.title}` : name

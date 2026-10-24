@@ -1,7 +1,7 @@
 openapi: 3.0.3
 
 info:
-  title: 小学六年级家庭自学 App API
+  title: 小学三年级家庭自学 App API
   version: 1.0.0
   description: |
     前后端分离接口契约。所有路径前缀 `/api/v1`。
@@ -203,7 +203,7 @@ paths:
               required: [name, grade]
               properties:
                 name:        { type: string, example: "小明" }
-                grade:       { type: integer, default: 6 }
+                grade:       { type: integer, default: 3 }
                 textbookVer: { type: string, default: RJ }
       responses:
         '200':

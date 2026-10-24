@@ -8,7 +8,7 @@
 | | 覆盖 |
 |---|---|
 | 单元 | 8 / 8（Unit 1 Try your best … Unit 8 Then and now） |
-| 单词 | 159 个，全部带英式音标 + 例句（来自教材附录 p110–112 官方生词表） |
+| 单词 | 159 个，全部带英式音标 + 例句（来自教材附录 p78–80 官方生词表） |
 | 课文 | 8 段（每单元 Story time 原文，共 125 行） |
 | 句型 | 每单元 8 句（Grammar time 例句 + 课文长句） |
 | 练习题 | 每单元 4 道（词汇/句型选择，带中文解析） |
@@ -44,7 +44,7 @@ web/english/curriculum.json          最终数据（服务端只读，按 mtime 
 ```json
 {
   "version": 1,
-  "source": "苏教译林版（2026年秋）六年级上册英语",
+  "source": "苏教译林版（2024年秋）三年级上册英语",
   "units": [{
     "unit": 1,
     "module": "Module 1 Good qualities",

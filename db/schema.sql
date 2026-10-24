@@ -1,5 +1,5 @@
 -- =============================================================================
--- 小学六年级家庭自学 App · SQLite DDL
+-- 小学三年级家庭自学 App · SQLite DDL
 -- 场景：单家庭私有部署 / 无教师端 / 无多租户
 -- 作业来源 = 家长上传老师作业截图 + 多模态识别
 -- 版本：v2.0（PostgreSQL → SQLite）
@@ -55,7 +55,7 @@ INSERT INTO family (id, name) VALUES (1, '我家');
 CREATE TABLE student (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     name            TEXT    NOT NULL,
-    grade           INTEGER NOT NULL DEFAULT 6,           -- 本期固定六年级
+    grade           INTEGER NOT NULL DEFAULT 3,           -- 本期三年级（2026-10 改造，grade=3）
     textbook_ver    TEXT    NOT NULL DEFAULT 'RJ',        -- RJ统编/PEP...
     avatar_url      TEXT,
     daily_limit_min INTEGER NOT NULL DEFAULT 90,          -- 每日可用时长（自家自律用，非合规强制）
@@ -166,7 +166,7 @@ CREATE TABLE knowledge_point (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     parent_id INTEGER REFERENCES knowledge_point(id),
     subject   INTEGER NOT NULL,                           -- 1语文 2数学 3英语
-    grade     INTEGER NOT NULL DEFAULT 6,
+    grade     INTEGER NOT NULL DEFAULT 3,
     name      TEXT    NOT NULL,
     code      TEXT    NOT NULL UNIQUE,                    -- 如 MATH6-CIRCLE-AREA
     path      TEXT    NOT NULL,                           -- 物化路径 /1/7/23/，便于查子树
@@ -177,7 +177,7 @@ CREATE INDEX idx_kp_subject ON knowledge_point(subject, grade);
 CREATE TABLE question (
     id             INTEGER PRIMARY KEY AUTOINCREMENT,
     subject        INTEGER NOT NULL,                      -- 1语文 2数学 3英语
-    grade          INTEGER NOT NULL DEFAULT 6,
+    grade          INTEGER NOT NULL DEFAULT 3,
     qtype          INTEGER NOT NULL,                      -- 1选择 2填空 3计算 4解答 5阅读 6作文 7听写
     stem           TEXT    NOT NULL,                      -- 题干
     stem_assets    TEXT,                                  -- JSON：配图/音频的文件相对路径

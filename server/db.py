@@ -60,7 +60,7 @@ def init_db(path: Path | None = None) -> Path:
     con = connect(p)
     try:
         if not con.execute("SELECT 1 FROM student LIMIT 1").fetchone():
-            con.execute("INSERT INTO student (name, grade) VALUES (?, 6)", ("孩子",))
+            con.execute("INSERT INTO student (name, grade) VALUES (?, 3)", ("孩子",))
         if not con.execute("SELECT 1 FROM device LIMIT 1").fetchone():
             con.execute(
                 "INSERT INTO device (device_id, label, role, form_factor) VALUES (?,?,?,?)",

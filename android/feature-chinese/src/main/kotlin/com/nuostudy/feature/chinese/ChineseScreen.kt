@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.nuostudy.core.ui.theme.AppTheme
 
 /**
- * 语文 · 六年级。
+ * 语文 · 内容层暂缓（三年级内容未建，当前只显示占位页）。
  *
  * 内容重心：朗读/背诵、字词默写、阅读理解。
  * 作文（习作）是半结构化题型 —— 只能落成打卡 + 拍照上传，不要指望自动判分。

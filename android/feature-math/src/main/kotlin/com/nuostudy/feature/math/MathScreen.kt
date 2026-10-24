@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.nuostudy.core.ui.theme.AppTheme
 
 /**
- * 数学 · 六年级：分数乘除法、圆、比例、圆柱与圆锥。
+ * 数学 · 内容层暂缓（三年级内容未建，当前只显示占位页）。
  *
  * 三科里最适合自动判分的一科（纯算式可精确求值），
  * 但 M2 已整体暂缓，所以当前作答只落库、不判对错。

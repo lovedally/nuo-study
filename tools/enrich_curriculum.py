@@ -6,7 +6,7 @@
 大问题），不需要模型；而音标、例句、练习题必须生成。分开的好处是 —— 重跑结构
 不会把已经校对的生成内容冲掉，反之亦然。
 
-在 NAS 上跑（key 从 /vol2/1000/software/nuo_study/.env 读，不出机器）：
+在配好 key 的机器上跑（key 从仓库根 .env 或 NUO_ENV 指定的 .env 读，不出机器）：
 
   python3 tools/enrich_curriculum.py <curriculum.json> [--only 1,2]
 
@@ -22,7 +22,9 @@ import time
 import urllib.error
 import urllib.request
 
-ENV_FILE = os.environ.get("NUO_ENV", "/vol2/1000/software/nuo_study/.env")
+ENV_FILE = os.environ.get(
+    "NUO_ENV",
+    str(pathlib.Path(__file__).resolve().parents[1] / ".env"))
 ENV = {}
 for line in open(ENV_FILE, encoding="utf-8"):
     s = line.strip()
@@ -34,7 +36,7 @@ KEY = ENV["QWEN_API_KEY"]
 BASE = ENV["QWEN_BASE_URL"].rstrip("/")
 MODEL = ENV.get("QWEN_CHAT_MODEL", "qwen-flash")
 
-PROMPT = """你在为小学六年级英语学习工具准备数据。下面是一个单元的真实教材内容。
+PROMPT = """你在为小学三年级英语学习工具准备数据（学生刚接触英语一两个月，认字母、会说最简单的问候语）。下面是一个单元的真实教材内容。
 
 单元：Unit {unit} {title}
 大问题：{bigq}
@@ -47,7 +49,7 @@ PROMPT = """你在为小学六年级英语学习工具准备数据。下面是�
 
 请只输出一个 JSON 对象（不要 markdown 代码块、不要解释）：
 {{"words":[{{"en":"原样返回这个单词","zh":"中文释义（已有英文就沿用，缺的补上）",
-   "phonetic":"英式音标，形如 /ˈhɒnɪst/","example":"含该词的一句英文例句",
+   "phonetic":"英式音标，形如 /ˈhɒnɪst/（给孩子家长参考）","example":"含该词的一句英文例句",
    "tip":"一句中文记忆提示，可空字符串"}}],
  "quiz":[{{"q":"英文题干，用 ___ 表示空格","options":["选项A","选项B","选项C"],
    "answer":0,"explain":"一句中文解析"}}]}}
@@ -55,9 +57,11 @@ PROMPT = """你在为小学六年级英语学习工具准备数据。下面是�
 硬性要求：
 1. words 必须**逐个覆盖**给出的所有单词，不增不减，顺序不变。
 2. phonetic 用英式（RP）音标；短语给整体音标。
-3. example 优先用课文原文里含这个词的句子；课文里没有就写一句六年级水平的简单句。
-4. quiz 出 4 道，只考本单元的词汇与句型（Unit 的语法重点从课文句型里判断），
-   每题 3 个选项、只有一个正确答案，answer 是正确选项的下标（0/1/2）。
+3. example 优先用课文原文里含这个词的句子；课文里没有就写一句**三年级上册水平**的简单句：
+   不超过 6 个单词、只用本册及更早的词汇（问候、名字、家人、数字 1-10、颜色、can/do 句式）。
+4. quiz 出 4 道，只考本单元的词汇与句型，**难度压到三年级上册**：
+   题干尽量短（一句话）、选项单词优先；考「Hello/Good morning/What's your name/
+   This is.../She's my mother/Happy Birthday」这类句型即可，不要考时态、比较级等超纲语法。
 5. 全部内容用简体中文解释，题目和选项里的英语必须地道、无语法错误。"""
 
 

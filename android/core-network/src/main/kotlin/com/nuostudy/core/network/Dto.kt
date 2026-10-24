@@ -49,7 +49,7 @@ data class DeviceDto(
 data class StudentDto(
     val id: Int,
     val name: String,
-    val grade: Int = 6,
+    val grade: Int = 3,
     val textbookVer: String = "RJ",
     val avatarUrl: String? = null,
     val dailyLimitMin: Int = 90,
