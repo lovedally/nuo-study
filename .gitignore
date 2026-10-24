@@ -94,3 +94,8 @@ tmp-child.db
 tmp-ui.xml
 tmp_merged.db*
 tmp-student-current/
+
+# 教材页图（体积大，不入库；JSON 抽取结果入库）
+data/english/pages_img/
+data/english/pages_img_s/
+data/tmp/

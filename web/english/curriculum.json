@@ -1,2107 +1,1863 @@
 {
  "version": 1,
- "source": "苏教译林版（2026年秋）六年级上册英语",
+ "source": "苏教译林版（2024年秋）三年级上册英语",
  "updatedAt": "2026-10-23",
- "note": "单词取自教材附录 p110-112 官方生词表；课文取自该单元 Story time；音标与练习题由 tools/enrich_curriculum.py 补充。",
+ "note": "单词取自教材附录 p78-80 官方生词表（Word lists I）；课文取自该单元 Story time；音标与练习题由 tools/enrich_curriculum.py 补充。",
  "units": [
   {
    "unit": 1,
-   "module": "Module 1 Good qualities",
-   "title": "Try your best",
-   "titleZh": "尽我所能",
-   "bigQuestion": "How should you face new difficulties?",
+   "module": "Module 1 Getting to know each other",
+   "title": "Hello!",
+   "titleZh": "你好",
+   "bigQuestion": "people?",
    "pages": [
     8,
-    19
+    15
    ],
    "status": "ready",
    "words": [
     {
-     "en": "try one's best",
-     "zh": "尽某人最大的努力",
+     "en": "hello",
+     "zh": "哈喽，你好",
      "core": true,
-     "phonetic": "/traɪ wʌnz best/",
-     "example": "She wanted to try her best.",
-     "tip": "try是尝试，best是最好的，合起来就是尽力而为。"
+     "phonetic": "/həˈləʊ/",
+     "example": "Hello, Liu Tao.",
+     "tip": "hello 是常用的“你好”。"
     },
     {
-     "en": "act",
-     "zh": "扮演，演出",
-     "core": false,
-     "phonetic": "/ækt/",
-     "example": "Su Hai acted well.",
-     "tip": "演员叫actor，动作叫action，act就是表演或行动。"
-    },
-    {
-     "en": "play",
-     "zh": "戏剧；扮演",
+     "en": "hi",
+     "zh": "喂，嗨",
      "core": true,
-     "phonetic": "/pleɪ/",
-     "example": "Two weeks ago, Su Hai wanted to play Mulan in a school play.",
-     "tip": "play既能玩游戏也能演话剧，注意区分语境。"
+     "phonetic": "/haɪ/",
+     "example": "Hi, Yang Ling.",
+     "tip": "hi 比 hello 更简短、随意。"
     },
     {
-     "en": "poster",
-     "zh": "海报，招贴画",
-     "core": false,
-     "phonetic": "/ˈpəʊstə(r)/",
-     "example": "We put up a poster for the show.",
-     "tip": "post(张贴)+er(物)，用来张贴宣传的纸片。"
-    },
-    {
-     "en": "last",
-     "zh": "上一个的，最近的",
+     "en": "Good morning.",
+     "zh": "早上好。",
      "core": true,
-     "phonetic": "/lɑːst/",
-     "example": "I saw him last week.",
-     "tip": "last既是最后也是上一个，记住时间顺序。"
+     "phonetic": "/ˌɡʊd ˈmɔːnɪŋ/",
+     "example": "Good morning, Miss Li.",
+     "tip": "morning 表示“早上”。"
     },
     {
-     "en": "take part",
-     "zh": "参与",
-     "core": false,
-     "phonetic": "/teɪk pɑːt/",
-     "example": "Many students took part in the activity.",
-     "tip": "take(拿) part(部分)，拿走一部分角色即参与。"
-    },
-    {
-     "en": "practise",
-     "zh": "练习，训练",
-     "core": false,
-     "phonetic": "/ˈpræktɪs/",
-     "example": "She asked Su Yang to practise with her.",
-     "tip": "英式拼写动词用s结尾，名词用c结尾(practice)。"
-    },
-    {
-     "en": "afraid",
-     "zh": "害怕，畏惧",
-     "core": false,
-     "phonetic": "/əˈfreɪd/",
-     "example": "Su Hai was afraid of acting in front of many people.",
-     "tip": "常搭配be afraid of...，表示对某事感到恐惧。"
-    },
-    {
-     "en": "calm down",
-     "zh": "平静，安静",
-     "core": false,
-     "phonetic": "/kɑːm daʊn/",
-     "example": "Please calm down and listen to me.",
-     "tip": "calm是冷静，down是向下，让情绪降下来。"
-    },
-    {
-     "en": "begin",
-     "zh": "开始",
+     "en": "I",
+     "zh": "我",
      "core": true,
-     "phonetic": "/bɪˈɡɪn/",
-     "example": "The class begins at 8 o'clock.",
-     "tip": "同义词start，begin更正式一点。"
+     "phonetic": "/aɪ/",
+     "example": "I am a cat.",
+     "tip": "I 就是“我”，要大写。"
     },
     {
-     "en": "forget",
-     "zh": "忘记，遗忘",
-     "core": false,
-     "phonetic": "/fəˈɡet/",
-     "example": "Don't forget your homework.",
-     "tip": "for(完全)+get(得到)，没得到就忘了。"
-    },
-    {
-     "en": "the words",
-     "zh": "歌词",
+     "en": "am",
+     "zh": "是",
      "core": true,
-     "phonetic": "/ðə wɜːdz/",
-     "example": "There were a lot of words in the play.",
-     "tip": "在歌曲或剧本中，words特指台词或歌词。"
+     "phonetic": "/æm/",
+     "example": "I am a cat.",
+     "tip": "am 常和 I 一起用，表示“我是”。"
     },
     {
-     "en": "remember",
-     "zh": "记起；记住",
+     "en": "ah",
+     "zh": "啊",
      "core": false,
-     "phonetic": "/rɪˈmembə(r)/",
-     "example": "She remembered all the words and movements.",
-     "tip": "re(再)+member(成员)，把成员重新放回脑海里。"
+     "phonetic": "/ɑː/",
+     "example": "Ah, a cat!",
+     "tip": "ah 表示突然想到或看见什么时说的“啊”。"
     },
     {
-     "en": "finish",
-     "zh": "完成，做好",
-     "core": false,
-     "phonetic": "/ˈfɪnɪʃ/",
-     "example": "We finished our work on time.",
-     "tip": "fin(结束)+ish，做完了就是结束。"
-    },
-    {
-     "en": "keep",
-     "zh": "继续，重复",
+     "en": "a",
+     "zh": "一（个）",
      "core": true,
-     "phonetic": "/kiːp/",
-     "example": "Keep trying and you will succeed.",
-     "tip": "keep doing sth. 表示持续做某事不中断。"
+     "phonetic": "/ə/",
+     "example": "I am a cat.",
+     "tip": "a 放在单数名词前，表示“一个”。"
     },
     {
-     "en": "ago",
-     "zh": "以前",
+     "en": "cat",
+     "zh": "猫",
      "core": true,
-     "phonetic": "/əˈɡəʊ/",
-     "example": "Two weeks ago, Su Hai wanted to play Mulan.",
-     "tip": "常用于时间段之后，如two days ago。"
+     "phonetic": "/kæt/",
+     "example": "I am a cat.",
+     "tip": "cat 的开头音像“开”，意思是“猫”。"
     },
     {
-     "en": "movement",
-     "zh": "运动，动作",
-     "core": false,
-     "phonetic": "/ˈmuːvmənt/",
-     "example": "There were also a lot of movements.",
-     "tip": "move(动)+ment(名词后缀)，指具体的动作。"
-    },
-    {
-     "en": "skill",
-     "zh": "技能，技术",
-     "core": false,
-     "phonetic": "/skɪl/",
-     "example": "She used her dancing skills to do them well.",
-     "tip": "学会的本领，如游泳技能、编程技能。"
-    },
-    {
-     "en": "in front of",
-     "zh": "在……前面",
+     "en": "Miss",
+     "zh": "小姐，女士",
      "core": true,
-     "phonetic": "/ɪn frʌnt əv/",
-     "example": "Su Hai was afraid of acting in front of many people.",
-     "tip": "front是正面，in front of就是在某人/物正前方。"
+     "phonetic": "/mɪs/",
+     "example": "Good morning, Miss Li.",
+     "tip": "Miss 用在女性老师或女士的姓前。"
     },
     {
-     "en": "ready",
-     "zh": "准备好的",
-     "core": false,
-     "phonetic": "/ˈredi/",
-     "example": "She was ready.",
-     "tip": "be ready to do sth. 准备好做某事。"
-    },
-    {
-     "en": "long ago",
-     "zh": "很久以前",
+     "en": "Good afternoon.",
+     "zh": "下午好。",
      "core": true,
-     "phonetic": "/lɒŋ əˈɡəʊ/",
-     "example": "Long ago, there lived a king.",
-     "tip": "故事开头常用语，相当于once upon a time。"
+     "phonetic": "/ˌɡʊd ˌɑːftəˈnuːn/",
+     "example": "Good afternoon, Miss Li.",
+     "tip": "afternoon 表示“下午”。"
     },
     {
-     "en": "snail",
-     "zh": "蜗牛",
-     "core": false,
-     "phonetic": "/sneɪl/",
-     "example": "A snail moves very slowly.",
-     "tip": "发音像“斯内尔”，背着壳慢慢爬的小动物。"
-    },
-    {
-     "en": "top",
-     "zh": "顶端，顶部",
+     "en": "class",
+     "zh": "同学们",
      "core": true,
-     "phonetic": "/tɒp/",
-     "example": "He climbed to the top of the mountain.",
-     "tip": "最高处，反义词是bottom(底部)。"
+     "phonetic": "/klɑːs/",
+     "example": "Good afternoon, class.",
+     "tip": "老师可以用 class 称呼全班同学。"
+    },
+    {
+     "en": "goodbye",
+     "zh": "再见，再会",
+     "core": true,
+     "phonetic": "/ˌɡʊdˈbaɪ/",
+     "example": "Goodbye, Miss Li.",
+     "tip": "goodbye 是正式一些的“再见”。"
+    },
+    {
+     "en": "bye",
+     "zh": "再见，再会",
+     "core": true,
+     "phonetic": "/baɪ/",
+     "example": "Bye!",
+     "tip": "bye 是简短、常用的“再见”。"
     }
    ],
    "sentences": [
     {
-     "en": "Two weeks ago, Su Hai wanted to play Mulan in a school play."
+     "en": "Good morning."
     },
     {
-     "en": "She used her dancing skills to do them well."
+     "en": "Good morning, Bobby."
     },
     {
-     "en": "Finally, it was time for the play."
+     "en": "Hi, Sam."
     },
     {
-     "en": "There were a lot of words in the play."
+     "en": "Hi, I’m Bobby."
     },
     {
-     "en": "Last week, Bobby and Sam saw a new poster at school."
+     "en": "Hi, I’m Sam."
     },
     {
-     "en": "First he forgot the words, but then he remembered them."
+     "en": "Ah! A cat!"
     },
     {
-     "en": "Long ago, there was a snail in a garden. It ______ (live) under a tall tree. One day, it ______ (see) a bird at the top of the tree. The snail ______ (want) to climb the tree and see the garden from the top of the tree. But it ______ (be) very slow. What could the snail do?"
+     "en": "How do Bobby and Sam greet each other?"
     },
     {
-     "en": "Sam: Bobby, why don't you take part?"
+     "en": "Good morning, Miss Li."
     }
    ],
    "passage": {
-    "title": "It was great!",
-    "page": 13,
+    "title": "First day at school",
+    "page": 12,
     "lines": [
-     "Two weeks ago, Su Hai wanted to play Mulan in a school play. It was her first school play. She wanted to try her best.",
-     "There were a lot of words in the play. She asked Su Yang to practise with her. There were also a lot of movements. She used her dancing skills to do them well.",
-     "Su Hai was afraid of acting in front of many people. She asked her family to watch her practise.",
-     "Su Hai practised a lot. She remembered all the words and movements. She was ready.",
-     "Finally, it was time for the play. Su Hai acted well. It was great!",
-     "Tip Be positive. See page 108.",
-     "What was difficult for Su Hai? What did she do?"
+     "First day at school",
+     "Good morning, Miss Li.",
+     "Good morning, Liu Tao.",
+     "Hi, Yang Ling.",
+     "Hello, Liu Tao.",
+     "Good afternoon, Miss Li.",
+     "Good afternoon, class.",
+     "Goodbye, Miss Li.",
+     "Bye!",
+     "How do the teacher and students greet each other?"
     ]
    },
    "quiz": [
     {
-     "q": "Su Hai wanted to ___ her best in the school play.",
+     "q": "___, Liu Tao.",
      "options": [
-      "try",
-      "make",
-      "do"
-     ],
-     "answer": 0,
-     "explain": "固定搭配 try one's best 意为“尽某人最大的努力”。"
-    },
-    {
-     "q": "She was afraid of acting ___ many people.",
-     "options": [
-      "behind",
-      "in front of",
-      "next to"
+      "Goodbye",
+      "Hello",
+      "Good afternoon"
      ],
      "answer": 1,
-     "explain": "根据课文内容，她害怕在很多人面前表演，in front of 意为“在……前面”。"
+     "explain": "和别人见面时可以说 Hello，意思是“你好”。"
     },
     {
-     "q": "Two weeks ___, Su Hai decided to take part in the play.",
+     "q": "It is morning. ___, Miss Li.",
      "options": [
-      "before",
-      "ago",
-      "later"
+      "Goodbye",
+      "Good morning",
+      "Good afternoon"
      ],
      "answer": 1,
-     "explain": "ago 用于表示从现在算起的过去时间，常放在时间段之后，如 two weeks ago。"
+     "explain": "早上见面要说 Good morning，意思是“早上好”。"
     },
     {
-     "q": "She practised hard and finally she was ___.",
+     "q": "I'm Mike. ___.",
      "options": [
-      "ready",
-      "afraid",
-      "busy"
+      "What's your name?",
+      "Happy Birthday!",
+      "This is my mother."
      ],
      "answer": 0,
-     "explain": "根据课文逻辑，经过大量练习后，她准备好了（was ready）。"
+     "explain": "想询问对方姓名时说 What's your name?，意思是“你叫什么名字？”"
+    },
+    {
+     "q": "This is my mother. ___ my mother.",
+     "options": [
+      "She's",
+      "I'm",
+      "He's"
+     ],
+     "answer": 0,
+     "explain": "mother 是女性，所以用 She's，意思是“她是我的妈妈”。"
     }
    ]
   },
   {
    "unit": 2,
-   "module": "Module 1 Good qualities",
-   "title": "Honesty",
-   "titleZh": "诚实",
-   "bigQuestion": "Why should you be honest?",
+   "module": "Module 1 Getting to know each other",
+   "title": "What's your name?",
+   "titleZh": "你叫什么名字",
+   "bigQuestion": "What's your name?",
    "pages": [
-    20,
-    31
+    16,
+    23
    ],
    "status": "ready",
    "words": [
     {
-     "en": "honesty",
-     "zh": "诚实",
-     "core": false,
-     "phonetic": "/ˈɒnəsti/",
-     "example": "Honesty is the best policy.",
-     "tip": "记住：诚实（honest）的名词形式，加 -y。"
-    },
-    {
-     "en": "storybook",
-     "zh": "儿童故事书",
+     "en": "what",
+     "zh": "什么",
      "core": true,
-     "phonetic": "/ˈstɔːribʊk/",
-     "example": "My storybook!",
-     "tip": "story（故事）+ book（书），合起来就是故事书。"
+     "phonetic": "/wɒt/",
+     "example": "What’s your name?",
+     "tip": "what 常用来询问“什么”。"
     },
     {
-     "en": "lie",
-     "zh": "谎言，谎话",
-     "core": false,
-     "phonetic": "/laɪ/",
-     "example": "He told a lie to his mother.",
-     "tip": "注意区分 lie (说谎) 和 lay (放置)。"
-    },
-    {
-     "en": "break",
-     "zh": "弄坏，损坏",
-     "core": false,
-     "phonetic": "/breɪk/",
-     "example": "I broke your book.",
-     "tip": "过去式是 broke，不规则动词要记牢。"
-    },
-    {
-     "en": "yesterday",
-     "zh": "在昨天；昨天",
+     "en": "is",
+     "zh": "是",
      "core": true,
-     "phonetic": "/ˈjestədeɪ/",
-     "example": "I saw him yesterday.",
-     "tip": "yester- 表示“过去的”，常与一般过去时连用。"
+     "phonetic": "/ɪz/",
+     "example": "What is your name?",
+     "tip": "is 常和 he、she 或单数名词连用。"
     },
     {
-     "en": "repair",
-     "zh": "修理，修补",
-     "core": false,
-     "phonetic": "/rɪˈpeə(r)/",
-     "example": "Sam repaired the book carefully.",
-     "tip": "re- (再次) + pair (配对/整理)，把坏的东西修好。"
-    },
-    {
-     "en": "say",
-     "zh": "说，讲",
+     "en": "your",
+     "zh": "你的，你们的",
      "core": true,
-     "phonetic": "/seɪ/",
-     "example": "He wanted to say sorry to Bobby.",
-     "tip": "say 后面通常接说话的内容，如 say hello, say sorry。"
-    },
-    {
-     "en": "poor",
-     "zh": "贫穷的",
-     "core": false,
-     "phonetic": "/pɔː(r)/",
-     "example": "The poor man needs help.",
-     "tip": "发音类似 door，但开头是 p。"
-    },
-    {
-     "en": "man",
-     "zh": "男人",
-     "core": true,
-     "phonetic": "/mæn/",
-     "example": "An old man walked by.",
-     "tip": "复数是 men，注意元音变化。"
-    },
-    {
-     "en": "old",
-     "zh": "老的，年纪大的",
-     "core": true,
-     "phonetic": "/əʊld/",
-     "example": "He is an old friend of mine.",
-     "tip": "反义词是 young。"
-    },
-    {
-     "en": "ox",
-     "zh": "牛",
-     "core": false,
-     "phonetic": "/ɒks/",
-     "example": "The farmer has an ox.",
-     "tip": "特指公牛或役牛，复数是 oxen。"
-    },
-    {
-     "en": "away from home",
-     "zh": "离开家",
-     "core": false,
-     "phonetic": "/əˈweɪ frəm həʊm/",
-     "example": "He stayed away from home for two days.",
-     "tip": "away 表示远离，from home 表示从家里。"
-    },
-    {
-     "en": "nephew",
-     "zh": "侄子，外甥",
-     "core": false,
-     "phonetic": "/ˈnefjuː/",
-     "example": "His nephew visited him last week.",
-     "tip": "对应的女性亲属是 niece (侄女/外甥女)。"
-    },
-    {
-     "en": "sell",
-     "zh": "卖，出售",
-     "core": true,
-     "phonetic": "/sel/",
-     "example": "They sell books in that shop.",
-     "tip": "过去式和过去分词都是 sold。"
-    },
-    {
-     "en": "buyer",
-     "zh": "买主，买方",
-     "core": false,
-     "phonetic": "/ˈbaɪə(r)/",
-     "example": "The buyer paid for the goods.",
-     "tip": "buy (买) + er (人) = 买东西的人。"
-    },
-    {
-     "en": "get back",
-     "zh": "重新获得",
-     "core": true,
-     "phonetic": "/ɡet bæk/",
-     "example": "Did you get your money back?",
-     "tip": "back 表示回来，get back 即拿回、找回。"
+     "phonetic": "/jɔː/",
+     "example": "What’s your name?",
+     "tip": "your 表示“你的”或“你们的”。"
     },
     {
      "en": "name",
-     "zh": "名声，名誉",
+     "zh": "名字",
      "core": true,
      "phonetic": "/neɪm/",
-     "example": "He lost his good name because of lying.",
-     "tip": "除了名字，这里指一个人的信誉或声望。"
+     "example": "What’s your name?",
+     "tip": "name 就是“名字”，name 中的 a 读 /eɪ/。"
     },
     {
-     "en": "watch",
-     "zh": "照看，看护",
+     "en": "my",
+     "zh": "我的",
      "core": true,
-     "phonetic": "/wɒtʃ/",
-     "example": "Please watch my bag for me.",
-     "tip": "除了看电视，还可以表示看守、照管。"
+     "phonetic": "/maɪ/",
+     "example": "My name is Liu Tao.",
+     "tip": "my 表示“我的”，发音像中文“麦”。"
     },
     {
-     "en": "wolf",
-     "zh": "狼",
-     "core": false,
-     "phonetic": "/wʊlf/",
-     "example": "The wolf is dangerous.",
-     "tip": "复数形式是 wolves，f 变 ves。"
-    },
-    {
-     "en": "answer",
-     "zh": "答复，回答",
+     "en": "Nice to meet you!",
+     "zh": "很高兴认识你！",
      "core": true,
-     "phonetic": "/ˈɑːnsə(r)/",
-     "example": "He didn't answer my question.",
-     "tip": "名词和动词同形，注意英式发音中 r 不卷舌。"
+     "phonetic": "/naɪs tə ˈmiːt juː/",
+     "example": "Nice to meet you, Yang Ling.",
+     "tip": "第一次见面时可以说这句话。"
     },
     {
-     "en": "cry",
-     "zh": "哭，哭泣",
+     "en": "too",
+     "zh": "也",
      "core": true,
-     "phonetic": "/kraɪ/",
-     "example": "The baby started to cry.",
-     "tip": "过去式 cried，以辅音+y结尾变i加ed。"
+     "phonetic": "/tuː/",
+     "example": "Nice to meet you too.",
+     "tip": "too 放在句末，表示“也”。"
+    },
+    {
+     "en": "boy",
+     "zh": "男孩",
+     "core": true,
+     "phonetic": "/bɔɪ/",
+     "example": "I am a boy.",
+     "tip": "boy 指男孩，oy 读 /ɔɪ/。"
+    },
+    {
+     "en": "and",
+     "zh": "和，与",
+     "core": true,
+     "phonetic": "/ənd/",
+     "example": "Good morning, boys and girls.",
+     "tip": "and 用来连接两个词或短语。"
+    },
+    {
+     "en": "girl",
+     "zh": "女孩",
+     "core": true,
+     "phonetic": "/ɡɜːl/",
+     "example": "I am a girl.",
+     "tip": "girl 指女孩，ir 读长音 /ɜː/。"
+    },
+    {
+     "en": "Mr (AmE Mr.)",
+     "zh": "先生",
+     "core": true,
+     "phonetic": "/ˈmɪstə/",
+     "example": "Good morning, Mr Green.",
+     "tip": "Mr 放在男士姓氏前，表示“先生”。"
     }
    ],
    "sentences": [
     {
-     "en": "It was not easy, but he tried his best."
+     "en": "Good afternoon, Sam!"
     },
     {
-     "en": "He had a sick old ox."
+     "en": "Good afternoon, Bobby!"
     },
     {
-     "en": "His nephew sold the ox."
+     "en": "Hello, I’m Sam. What’s your name?"
     },
     {
-     "en": "Meng Xin got back his sick old ox."
+     "en": "My name is Beibei."
     },
     {
-     "en": "Meng Xin did not want to sell a sick old ox to others."
+     "en": "Hello, Beibei. I’m Bobby."
     },
     {
-     "en": "Did you buy my ox?"
+     "en": "Nice to meet you!"
     },
     {
-     "en": "Yes, I did. / No, I didn't."
+     "en": "Nice to meet you too."
     },
     {
-     "en": "Long ago, there was a boy. His family _______ (have) some sheep."
+     "en": "How do they tell each other their names?"
     }
    ],
    "passage": {
-    "title": "Meng Xin and his ox",
-    "page": 25,
+    "title": "A new classmate",
+    "page": 20,
     "lines": [
-     "Long ago, there was a poor man. His name was Meng Xin.",
-     "He had a sick old ox.",
-     "One day, Meng Xin was away from home. His nephew sold the ox. Meng Xin came back home. He did not see the ox.",
-     "Meng Xin: Where's the ox? Did you sell it?",
-     "Nephew: Yes, I did. We need the money to buy food!",
-     "Meng Xin did not want to sell a sick old ox to others.",
-     "Meng Xin: Did you buy my ox?",
-     "Buyer: Yes, I did.",
-     "Meng Xin: Sorry, I can't sell it to you. It's old and sick.",
-     "Buyer: It's very kind of you. Thank you.",
-     "Meng Xin got back his sick old ox. He got a good name too.",
-     "What did Meng Xin get from being honest?"
+     "A new classmate",
+     "Mike Brown: Hello, I’m Mike Brown.",
+     "Yang Ling: Hi, Mike. I’m Yang Ling.",
+     "Mike Brown: Nice to meet you, Yang Ling.",
+     "Yang Ling: Nice to meet you too.",
+     "Mike Brown: Hello. What’s your name?",
+     "Liu Tao: My name is Liu Tao.",
+     "Wang Bing: I’m Wang Bing. Nice to meet you.",
+     "Tip: Note English names. See page 76.",
+     "Wang Bing",
+     "Yang Ling",
+     "Liu Tao",
+     "Hi!",
+     "Good morning, boys and girls.",
+     "Good morning, Mr Green.",
+     "How does Mike get to know other students’ names?"
     ]
    },
    "quiz": [
     {
-     "q": "Sam did not feel good. He wanted to ___ Bobby's book.",
+     "q": "___ your name?",
      "options": [
-      "break",
-      "repair",
-      "sell"
+      "What’s",
+      "Good",
+      "Nice"
      ],
-     "answer": 1,
-     "explain": "根据课文内容，Sam 想要修复（repair）Bobby 的书，而不是弄坏或卖掉。"
+     "answer": 0,
+     "explain": "询问姓名要用 What’s your name?，意思是“你叫什么名字？”"
     },
     {
-     "q": "Why should you be honest? Because honesty helps you keep your good ___.",
+     "q": "—What’s your name? —___",
      "options": [
-      "money",
-      "name",
-      "toy"
+      "My name is Liu Tao.",
+      "Nice to meet you too.",
+      "Good morning."
      ],
-     "answer": 1,
-     "explain": "本单元主题是诚实，诚实能维护良好的名声（name/reputation）。"
+     "answer": 0,
+     "explain": "回答姓名可以说 My name is Liu Tao.，意思是“我的名字是刘涛。”"
     },
     {
-     "q": "I'm sorry. I ___ your book.",
+     "q": "Nice to meet you. —___",
      "options": [
-      "break",
-      "broke",
-      "broken"
+      "What’s your name?",
+      "Nice to meet you too.",
+      "Good morning, Mr Green."
      ],
      "answer": 1,
-     "explain": "句子描述的是过去发生的动作，需要使用 break 的过去式 broke。"
+     "explain": "对 Nice to meet you. 的回答是 Nice to meet you too.，意思是“我也很高兴认识你。”"
     },
     {
-     "q": "No, you didn't. I ___ it last week!",
+     "q": "___ morning, boys and girls.",
      "options": [
-      "break",
-      "broke",
-      "breaking"
+      "Good",
+      "What’s",
+      "My"
      ],
-     "answer": 1,
-     "explain": "时间状语 last week 表明是一般过去时，动词需用过去式 broke。"
+     "answer": 0,
+     "explain": "早上问候大家要说 Good morning, boys and girls.，意思是“早上好，同学们。”"
     }
    ]
   },
   {
    "unit": 3,
-   "module": "Module 1 Good qualities",
-   "title": "Great people",
-   "titleZh": "伟大的人",
-   "bigQuestion": "Can we be great people like them?",
+   "module": "Module 1 Getting to know each other",
+   "title": "Are you Su Hai?",
+   "titleZh": "你是苏海吗",
+   "bigQuestion": "Are you Su Hai?",
    "pages": [
-    32,
-    43
+    24,
+    31
    ],
    "status": "ready",
    "words": [
     {
-     "en": "hero",
-     "zh": "崇拜的对象",
-     "core": false,
-     "phonetic": "/ˈhɪərəʊ/",
-     "example": "You're my hero.",
-     "tip": "谐音“希罗”，英雄"
-    },
-    {
-     "en": "famous",
-     "zh": "著名的，出名的",
+     "en": "are",
+     "zh": "是",
      "core": true,
-     "phonetic": "/ˈfeɪməs/",
-     "example": "He is a famous scientist.",
-     "tip": "fa(发) + mous(老鼠)，名声像老鼠一样到处传"
+     "phonetic": "/ɑː/",
+     "example": "Are you Su Hai?",
+     "tip": "are 和“是”很像，常用于 you 后面。"
     },
     {
-     "en": "scientist",
-     "zh": "科学家",
-     "core": false,
-     "phonetic": "/ˈsaɪəntɪst/",
-     "example": "Bobby wrote about a famous scientist.",
-     "tip": "science(科学) + ist(人)"
-    },
-    {
-     "en": "inventor",
-     "zh": "发明家，发明者",
-     "core": false,
-     "phonetic": "/ɪnˈventə(r)/",
-     "example": "Edison was a great inventor.",
-     "tip": "in(进入) + vent(来) + or(人)，带来新东西的人"
-    },
-    {
-     "en": "hybrid rice",
-     "zh": "杂交水稻",
-     "core": false,
-     "phonetic": "/ˈhaɪbrɪd raɪs/",
-     "example": "Yuan Longping developed hybrid rice.",
-     "tip": "hybrid(混合) + rice(米)"
-    },
-    {
-     "en": "dream",
-     "zh": "梦想，愿望",
-     "core": false,
-     "phonetic": "/driːm/",
-     "example": "With dreams and hard work, you can shine bright.",
-     "tip": "发音像“底瑞姆”，做梦"
-    },
-    {
-     "en": "cool",
-     "zh": "凉快，凉爽",
+     "en": "you",
+     "zh": "你，你们",
      "core": true,
-     "phonetic": "/kuːl/",
-     "example": "It feels cool in the shade.",
-     "tip": "发音像“酷”，很酷也很凉快"
+     "phonetic": "/juː/",
+     "example": "Are you Su Hai?",
+     "tip": "you 听起来像“优”，表示“你”或“你们”。"
     },
     {
-     "en": "all over the world",
-     "zh": "世界各地，全世界",
+     "en": "no",
+     "zh": "不，不是",
      "core": true,
-     "phonetic": "/ɔːl ˈəʊvə ðə wɜːld/",
-     "example": "His invention is used all over the world.",
-     "tip": "all(所有) + over(遍及) + world(世界)"
+     "phonetic": "/nəʊ/",
+     "example": "No, I'm not.",
+     "tip": "no 表示“不”或“不是”。"
     },
     {
-     "en": "be born",
-     "zh": "出生，诞生",
+     "en": "not",
+     "zh": "不，没有",
+     "core": true,
+     "phonetic": "/nɒt/",
+     "example": "No, I'm not.",
+     "tip": "not 常和 am、is、are 一起表示“不”。"
+    },
+    {
+     "en": "yes",
+     "zh": "是，对",
+     "core": true,
+     "phonetic": "/jes/",
+     "example": "Yes, I am!",
+     "tip": "yes 表示“是的”或“对”。"
+    },
+    {
+     "en": "ha （",
+     "zh": "笑声）哈",
      "core": false,
-     "phonetic": "/biː bɔːn/",
-     "example": "He was born in China.",
-     "tip": "born是bear的过去分词，被生出来"
+     "phonetic": "/hɑː/",
+     "example": "Ha!",
+     "tip": "ha 是笑声“哈”。"
     },
     {
-     "en": "pass away",
-     "zh": "去世",
+     "en": "Here I am!",
+     "zh": "我在这里！",
+     "core": true,
+     "phonetic": "/hɪə aɪ æm/",
+     "example": "Here I am!",
+     "tip": "看到别人找你时，可以说 Here I am!。"
+    },
+    {
+     "en": "but",
+     "zh": "但是",
+     "core": true,
+     "phonetic": "/bət/",
+     "example": "But I'm not Su Hai.",
+     "tip": "but 表示转折，意思是“但是”。"
+    },
+    {
+     "en": "oh",
+     "zh": "哦，哦",
      "core": false,
-     "phonetic": "/pɑːs əˈweɪ/",
-     "example": "The old man passed away last year.",
-     "tip": "pass(经过) + away(离开)，委婉说法"
+     "phonetic": "/əʊ/",
+     "example": "Oh, I'm sorry.",
+     "tip": "oh 表示惊讶或突然明白。"
     },
     {
-     "en": "study",
-     "zh": "研究，调查",
+     "en": "sorry",
+     "zh": "对不起",
      "core": true,
-     "phonetic": "/ˈstʌdi/",
-     "example": "They study hard every day.",
-     "tip": "学习、研究"
+     "phonetic": "/ˈsɒri/",
+     "example": "I'm sorry.",
+     "tip": "sorry 表示“对不起”。"
     },
     {
-     "en": "call",
-     "zh": "称呼，把……叫作",
-     "core": true,
-     "phonetic": "/kɔːl/",
-     "example": "People call him the father of hybrid rice.",
-     "tip": "打电话或称呼"
-    },
-    {
-     "en": "come true",
-     "zh": "实现，成为现实",
+     "en": "twin",
+     "zh": "双胞胎之一",
      "core": false,
-     "phonetic": "/kʌm truː/",
-     "example": "My dream came true.",
-     "tip": "come(来) + true(真)，变成真的"
+     "phonetic": "/twɪn/",
+     "example": "You're twins!",
+     "tip": "twin 是“双胞胎中的一个”。"
     },
     {
-     "en": "farming",
-     "zh": "务农",
+     "en": "we",
+     "zh": "我们",
+     "core": true,
+     "phonetic": "/wiː/",
+     "example": "Yes, we are!",
+     "tip": "we 表示“我们”，包括说话的人。"
+    },
+    {
+     "en": "excuse me",
+     "zh": "对不起",
      "core": false,
-     "phonetic": "/ˈfɑːmɪŋ/",
-     "example": "He worked on farming for many years.",
-     "tip": "farm(农场) + ing(动作)"
+     "phonetic": "/ɪkˈskjuːz miː/",
+     "example": "Excuse me, are you Su Hai?",
+     "tip": "excuse me 可用于礼貌地引起别人注意。"
     },
     {
-     "en": "age",
-     "zh": "年龄，年纪",
+     "en": "class",
+     "zh": "班级",
      "core": true,
-     "phonetic": "/eɪdʒ/",
-     "example": "At the age of ten, he moved here.",
-     "tip": "发音像“诶纪”"
+     "phonetic": "/klɑːs/",
+     "example": "I'm in Class 2.",
+     "tip": "class 是“班级”，Class 2 表示“二班”。"
     },
     {
-     "en": "grow up",
-     "zh": "长大，成长",
-     "core": false,
-     "phonetic": "/ɡrəʊ ʌp/",
-     "example": "I want to be a doctor when I grow up.",
-     "tip": "grow(生长) + up(向上)"
-    },
-    {
-     "en": "work on",
-     "zh": "从事，致力于",
+     "en": "in",
+     "zh": "在……内，在……中",
      "core": true,
-     "phonetic": "/wɜːk ɒn/",
-     "example": "She works on science projects.",
-     "tip": "在...上面工作，即从事某事"
+     "phonetic": "/ɪn/",
+     "example": "I'm in Class 2.",
+     "tip": "in 表示“在……里面”或“在某个班级”。"
     },
     {
-     "en": "difficult",
-     "zh": "困难的",
+     "en": "with",
+     "zh": "和，同",
      "core": true,
-     "phonetic": "/ˈdɪfɪkəlt/",
-     "example": "This question is difficult.",
-     "tip": "dif(分开) + ficult(折)，难折断"
+     "phonetic": "/wɪð/",
+     "example": "I'm in Class 1 with you.",
+     "tip": "with 表示“和……一起”。"
     },
     {
-     "en": "develop",
-     "zh": "开发，研制",
-     "core": false,
-     "phonetic": "/dɪˈveləp/",
-     "example": "Scientists develop new medicines.",
-     "tip": "de(去掉) + velop(包裹)，展开、发展"
-    },
-    {
-     "en": "bamboo",
-     "zh": "竹，竹子",
-     "core": false,
-     "phonetic": "/bæmˈbuː/",
-     "example": "Pandas love eating bamboo.",
-     "tip": "发音像“班布”"
-    },
-    {
-     "en": "silk",
-     "zh": "丝绸",
-     "core": false,
-     "phonetic": "/sɪlk/",
-     "example": "Silk is soft and smooth.",
-     "tip": "发音像“死尔克”"
-    },
-    {
-     "en": "dear",
-     "zh": "昂贵的，价格高的",
+     "en": "right",
+     "zh": "正确的",
      "core": true,
-     "phonetic": "/dɪə(r)/",
-     "example": "This coat is too dear for me.",
-     "tip": "亲爱的，也指贵重的"
-    },
-    {
-     "en": "paper",
-     "zh": "纸，纸张",
-     "core": true,
-     "phonetic": "/ˈpeɪpə(r)/",
-     "example": "Please write it on paper.",
-     "tip": "发音像“佩帕”"
-    },
-    {
-     "en": "at first",
-     "zh": "起初，起先",
-     "core": true,
-     "phonetic": "/æt fɜːst/",
-     "example": "At first, I didn't like it.",
-     "tip": "at(在) + first(第一)"
+     "phonetic": "/raɪt/",
+     "example": "Right!",
+     "tip": "right 在这里表示“对，正确”。"
     }
    ],
    "sentences": [
     {
-     "en": "How/Who was ...? How did ...?"
+     "en": "Are you Jake?"
     },
     {
-     "en": "How was school today?"
+     "en": "Hi, Bobby!"
     },
     {
-     "en": "Who was Yuan Longping?"
+     "en": "No, I’m not."
     },
     {
-     "en": "How did his dreams come true?"
+     "en": "I’m John."
     },
     {
-     "en": "Cai Lun was a great Chinese inventor. He lived in the Han Dynasty. He liked making things."
+     "en": "Ha ha! Here I am!"
     },
     {
-     "en": "At that time, people often wrote on bamboo or silk. But bamboo was heavy and silk was dear. Cai Lun wanted to use cheap things to make paper. It was very difficult at first, but he did not give up. He kept thinking and trying. Finally, he made cheap but good paper."
+     "en": "What does Bobby ask to find Jake?"
     },
     {
-     "en": "Cai Lun's paper helped more people read and write. It was very important."
+     "en": "You're twins!"
     },
     {
-     "en": "Hi, Bobby. I want to do the shopping for Mrs Pig."
+     "en": "Good morning, Su Hai."
     }
    ],
    "passage": {
-    "title": "A great scientist",
-    "page": 37,
+    "title": "You're twins!",
+    "page": 28,
     "lines": [
-     "Yuan Longping:",
-     "father of hybrid rice",
-     "I have two dreams. I want to enjoy the cool",
-     "under tall rice plants. I also want to see",
-     "hybrid rice grow all over the world.",
-     "—Yuan Longping",
-     "Who was Yuan Longping?",
-     "Yuan Longping was a Chinese rice scientist. He was born in 1930 in Beijing. He passed away in 2021 in Changsha. He did a lot of studies on rice. People call him the father of hybrid rice.",
-     "How did his dreams come true?",
-     "Yuan liked farming at an early age. When he grew up, he studied farming. In 1964, he began to work on hybrid rice. It was very difficult, but he never gave up. He worked hard and always stayed in the fields. He developed hybrid rice in 1973. Now hybrid rice grows in China and many other countries. It feeds people all over the world.",
-     "Tip: Say years in English correctly. See page 108.",
-     "Why was Yuan Longping a great scientist?"
+     "You're twins!",
+     "Good morning, Su Hai.",
+     "Good morning.",
+     "But I'm not Su Hai.",
+     "I'm Su Yang.",
+     "Oh, I'm sorry. Nice to meet you, Su Yang.",
+     "Nice to meet you too.",
+     "Ah! You're twins!",
+     "Hi, Mike.",
+     "Yes, we are!",
+     "you're = you are",
+     "Excuse me, are you Su Hai?",
+     "No, I'm not. I'm Su Yang.",
+     "What class are you in?",
+     "I'm in Class 2.",
+     "Are you Su Hai?",
+     "Yes, I am! I'm in Class 1 with you.",
+     "Right!",
+     "Su Hai and Su Yang look the same. What does Mike ask to find out who they are?"
     ]
    },
    "quiz": [
     {
-     "q": "My ___ is my mother. She helps everyone.",
+     "q": "Are ___ Su Hai?",
      "options": [
-      "hero",
-      "teacher",
-      "doctor"
+      "you",
+      "I",
+      "we"
      ],
      "answer": 0,
-     "explain": "根据课文标题和语境，妈妈是他的英雄（hero）。"
+     "explain": "询问“你是苏海吗？”用 Are you。"
     },
     {
-     "q": "Yuan Longping is a famous ___ who developed hybrid rice.",
+     "q": "No, I'm ___.",
      "options": [
-      "artist",
-      "scientist",
-      "writer"
-     ],
-     "answer": 1,
-     "explain": "袁隆平是培育杂交水稻的著名科学家（scientist）。"
-    },
-    {
-     "q": "With dreams and hard work, you can also shine ___.",
-     "options": [
-      "bright",
-      "dark",
-      "quiet"
+      "not",
+      "yes",
+      "are"
      ],
      "answer": 0,
-     "explain": "根据韵文 'shine bright'，意为闪耀光芒。"
+     "explain": "否定回答用 not，No, I'm not. 表示“不，我不是”。"
     },
     {
-     "q": "Can we be great people ___ them?",
+     "q": "What class are you ___?",
      "options": [
-      "like",
-      "as",
-      "for"
+      "in",
+      "with",
+      "no"
      ],
      "answer": 0,
-     "explain": "大问题句型 'like them' 表示像他们一样。"
+     "explain": "询问“你在哪个班？”用 What class are you in?。"
+    },
+    {
+     "q": "___, Mike.",
+     "options": [
+      "Twin",
+      "Class",
+      "Hi"
+     ],
+     "answer": 2,
+     "explain": "见面打招呼可以说 Hi, Mike.。"
     }
    ]
   },
   {
    "unit": 4,
-   "module": "Module 1 Good qualities",
-   "title": "Getting together",
-   "titleZh": "团聚",
-   "bigQuestion": "How can you make your parents and grandparents happy?",
+   "module": "Module 1 Getting to know each other",
+   "title": "This is my friend",
+   "titleZh": "这是我的朋友",
+   "bigQuestion": "your friends?",
    "pages": [
-    44,
-    57
+    32,
+    41
    ],
    "status": "ready",
    "words": [
     {
-     "en": "ninth",
-     "zh": "第九",
+     "en": "this",
+     "zh": "这，这个",
      "core": true,
-     "phonetic": "/naɪnθ/",
-     "example": "It is the ninth day of the lunar month.",
-     "tip": "nine 加 th 变序数词，注意拼写去 e 加 th"
+     "phonetic": "/ðɪs/",
+     "example": "This is Zhang Hua.",
+     "tip": "this 指眼前的“这、这个”。"
     },
     {
-     "en": "lunar month",
-     "zh": "农历，阴历",
-     "core": false,
-     "phonetic": "/ˈluːnə mʌnθ/",
-     "example": "The Mid-Autumn Festival falls on the fifteenth day of the eighth lunar month.",
-     "tip": "lunar 指月亮的，month 是月份，合起来指按月亮周期计算的农历月"
-    },
-    {
-     "en": "show",
-     "zh": "表示",
+     "en": "friend",
+     "zh": "朋友",
      "core": true,
-     "phonetic": "/ʃəʊ/",
-     "example": "We show our love by spending time with family.",
-     "tip": "动词，展示、表现；名词，节目"
+     "phonetic": "/frend/",
+     "example": "This is my friend, Zhang Hua.",
+     "tip": "friend 里有 friend，朋友就是和你一起玩的伙伴。"
     },
     {
-     "en": "love",
-     "zh": "爱，关爱",
+     "en": "she",
+     "zh": "她",
      "core": true,
-     "phonetic": "/lʌv/",
-     "example": "Grandpa and Grandma took care of me because they love me.",
-     "tip": "既可以是名词“爱”，也可以是动词“喜爱”"
+     "phonetic": "/ʃiː/",
+     "example": "She's my friend.",
+     "tip": "she 表示“她”，指女生或女性。"
     },
     {
-     "en": "smartphone",
-     "zh": "智能手机",
-     "core": false,
-     "phonetic": "/ˈsmɑːtfəʊn/",
-     "example": "My parents gave Grandma a nice smartphone.",
-     "tip": "smart (聪明的) + phone (电话)，即智能手机"
-    },
-    {
-     "en": "wish",
-     "zh": "祝，祝愿",
+     "en": "he",
+     "zh": "他",
      "core": true,
-     "phonetic": "/wɪʃ/",
-     "example": "We wished Grandma a long life.",
-     "tip": "常用句型 wish sb. sth. 祝某人..."
+     "phonetic": "/hiː/",
+     "example": "He's my friend.",
+     "tip": "he 表示“他”，指男生或男性。"
     },
     {
-     "en": "a long life",
-     "zh": "长寿",
-     "core": false,
-     "phonetic": "/ə lɒŋ laɪf/",
-     "example": "I wish you a long life and good health.",
-     "tip": "long 长的，life 生命，组合意为长寿"
-    },
-    {
-     "en": "blow out",
-     "zh": "吹灭，熄灭",
-     "core": false,
-     "phonetic": "/bləʊ aʊt/",
-     "example": "Then Grandma blew out the candles.",
-     "tip": "blow 吹，out 出去，合起来指把火吹灭"
-    },
-    {
-     "en": "candle",
-     "zh": "蜡烛",
+     "en": "it",
+     "zh": "它",
      "core": true,
-     "phonetic": "/ˈkændl/",
-     "example": "There are many candles on the birthday cake.",
-     "tip": "生日蛋糕上插的那个东西"
+     "phonetic": "/ɪt/",
+     "example": "It's good!",
+     "tip": "it 表示“它”，也可以指一件事情。"
     },
     {
-     "en": "photo",
-     "zh": "照片",
+     "en": "good",
+     "zh": "好的",
      "core": true,
-     "phonetic": "/ˈfəʊtəʊ/",
-     "example": "We also took a family photo together.",
-     "tip": "photograph 的缩写，拍照 take a photo"
+     "phonetic": "/ɡʊd/",
+     "example": "It's good!",
+     "tip": "good 表示“好的”，看到它就想到“棒”。"
     },
     {
-     "en": "time flies",
-     "zh": "时光飞逝，光阴似箭",
+     "en": "Thank you.",
+     "zh": "谢谢你。",
      "core": true,
-     "phonetic": "/taɪm flaɪz/",
-     "example": "Time flies! When I was a little kid, Grandpa and Grandma took care of me.",
-     "tip": "fly 飞，这里比喻时间像飞一样过得很快"
+     "phonetic": "/ˈθæŋk juː/",
+     "example": "Thank you.",
+     "tip": "Thank you. 用来向别人表示感谢。"
     },
     {
-     "en": "kid",
-     "zh": "小孩",
+     "en": "have",
+     "zh": "有，持有",
      "core": true,
-     "phonetic": "/kɪd/",
-     "example": "When I was a little kid, I needed help.",
-     "tip": "口语中常用的“孩子”，比 child 更随意"
+     "phonetic": "/hæv/",
+     "example": "I have many friends.",
+     "tip": "have 表示“有”，I have 就是“我有”。"
     },
     {
-     "en": "March",
-     "zh": "三月",
+     "en": "many",
+     "zh": "许多",
      "core": true,
-     "phonetic": "/mɑːtʃ/",
-     "example": "My birthday is in March.",
-     "tip": "一年中的第三个月，首字母大写"
-    },
-    {
-     "en": "April",
-     "zh": "四月",
-     "core": true,
-     "phonetic": "/ˈeɪprəl/",
-     "example": "Flowers bloom in April.",
-     "tip": "一年中的第四个月，首字母大写"
-    },
-    {
-     "en": "July",
-     "zh": "七月",
-     "core": true,
-     "phonetic": "/dʒuˈlaɪ/",
-     "example": "Summer holiday usually starts in July.",
-     "tip": "一年中的第七个月，首字母大写"
-    },
-    {
-     "en": "August",
-     "zh": "八月",
-     "core": true,
-     "phonetic": "/ˈɔːɡəst/",
-     "example": "It is very hot in August.",
-     "tip": "一年中的第八个月，首字母大写"
-    },
-    {
-     "en": "November",
-     "zh": "十一月",
-     "core": true,
-     "phonetic": "/nəʊˈvembə/",
-     "example": "Thanksgiving is in November in the US.",
-     "tip": "一年中的第十一个月，首字母大写"
+     "phonetic": "/ˈmeni/",
+     "example": "I have many friends.",
+     "tip": "many 表示“许多”，比 one 多很多。"
     }
    ],
    "sentences": [
     {
-     "en": "first, second, third ..."
+     "en": "Goodbye, Max and Willy!"
     },
     {
-     "en": "It's on the ninth day of the ninth lunar month."
+     "en": "Hello, Bobby!"
     },
     {
-     "en": "Yesterday was 21st October."
+     "en": "Hi, Tina!"
     },
     {
-     "en": "It was Grandma's 66th birthday."
+     "en": "This is Sam."
     },
     {
-     "en": "This is our 12th photo."
+     "en": "He’s my friend."
     },
     {
-     "en": "1 Today is my grandma's ________ ( ) birthday."
+     "en": "Hi. Nice to meet you."
     },
     {
-     "en": "2 My mother's birthday is on ________ ( ). My father's birthday is on ________ ( )."
+     "en": "How does Bobby introduce his friend to Tina?"
     },
     {
-     "en": "3 I want to visit my grandparents on ________ ( )."
+     "en": "Hello, Wang Bing."
     }
    ],
    "passage": {
-    "title": "Grandma's birthday",
-    "page": 49,
+    "title": "This is Zhang Hua",
+    "page": 36,
     "lines": [
-     "Yesterday was 21st October. It was Grandma's 66th birthday.",
-     "We went to my grandparents' house in the morning.",
-     "My parents gave Grandma a nice smartphone.",
-     "I drew a picture for her. We also brought a cake.",
-     "Grandpa and Grandma were so happy to see us.",
-     "We had a big lunch. We ate noodles and wished Grandma",
-     "a long life. Then Grandma blew out the candles, and we",
-     "ate the cake.",
-     "In the afternoon, I chatted with Grandma. We also took a",
-     "family photo together. We do this on Grandma's",
-     "birthday every year. This is",
-     "our 12th photo.",
-     "Time flies! When I was a little",
-     "kid, Grandpa and Grandma",
-     "took care of me. Now I am a big",
-     "boy. I can take care of them. I",
-     "want to spend more time with",
-     "them.",
-     "What did Wang Bing do to make his grandma happy?"
+     "This is Zhang Hua",
+     "Hello, Wang Bing.",
+     "Hi, Liu Tao. This is my friend, Zhang Hua.",
+     "Zhang Hua, this is Liu Tao.",
+     "He’s my friend.",
+     "Hello, Zhang Hua.",
+     "Nice to meet you.",
+     "Nice to meet you too.",
+     "It's good!",
+     "Thank you.",
+     "This is Su Hai. She's my friend. I have many friends in my class.",
+     "Hi, I'm Zhang Hua.",
+     "Nice to meet you.",
+     "it's = it is",
+     "she's = she is",
+     "How do Wang Bing and Liu Tao introduce their friends?"
     ]
    },
    "quiz": [
     {
-     "q": "Yesterday was Grandma's ___ birthday.",
+     "q": "___ is my friend, Zhang Hua.",
      "options": [
-      "66th",
-      "sixty-six",
-      "sixty-sixth"
-     ],
-     "answer": 2,
-     "explain": "表示第几个生日需用序数词，66 的序数词是 sixty-sixth。"
-    },
-    {
-     "q": "We ___ Grandma a long life at lunch.",
-     "options": [
-      "wish",
-      "wished",
-      "wishes"
-     ],
-     "answer": 1,
-     "explain": "课文描述的是昨天发生的事（Yesterday），故谓语动词用过去式 wished。"
-    },
-    {
-     "q": "Grandma ___ out the candles happily.",
-     "options": [
-      "blew",
-      "blow",
-      "blows"
+      "This",
+      "He",
+      "She"
      ],
      "answer": 0,
-     "explain": "短语 blow out 意为吹灭，根据上下文时态为过去时，blow 的过去式是 blew。"
+     "explain": "介绍眼前的人或物用 This is，意思是“这是”。"
     },
     {
-     "q": "I want to spend more ___ with my grandparents.",
+     "q": "Su Hai is a girl. ___ my friend.",
      "options": [
-      "money",
-      "time",
-      "food"
+      "He's",
+      "It's",
+      "She's"
      ],
-     "answer": 1,
-     "explain": "根据课文主旨及常见搭配 spend time with sb.（花时间和某人在一起），选 time。"
+     "answer": 2,
+     "explain": "Su Hai 是女生，用 She's，意思是“她是”。"
+    },
+    {
+     "q": "I have ___ friends.",
+     "options": [
+      "this",
+      "good",
+      "many"
+     ],
+     "answer": 2,
+     "explain": "many 表示“许多”，I have many friends 意思是“我有许多朋友”。"
+    },
+    {
+     "q": "___ good!",
+     "options": [
+      "He's",
+      "She's",
+      "It's"
+     ],
+     "answer": 2,
+     "explain": "表示“它很好”用 It's good，It's 是 it is 的缩写。"
     }
    ]
   },
   {
    "unit": 5,
-   "module": "Module 2 Our world",
-   "title": "Keeping our city clean",
-   "titleZh": "保持城市整洁",
-   "bigQuestion": "How can you keep your city clean?",
+   "module": "Module 2 My family and me",
+   "title": "She's my mother",
+   "titleZh": "她是我妈妈",
+   "bigQuestion": "Father finger, father finger, where are you?",
    "pages": [
-    58,
-    69
+    42,
+    49
    ],
    "status": "ready",
    "words": [
     {
-     "en": "rubbish bin",
-     "zh": "垃圾桶",
-     "core": false,
-     "phonetic": "/ˈrʌbɪʃ bɪn/",
-     "example": "Please put the waste in the rubbish bin.",
-     "tip": "rubbish是垃圾，bin是箱子，合起来就是装垃圾的箱子。"
-    },
-    {
-     "en": "ground",
-     "zh": "地，地面",
-     "core": false,
-     "phonetic": "/ɡraʊnd/",
-     "example": "The ball fell on the ground.",
-     "tip": "想象双脚踩在坚实的地面上，发音像'ground'（低沉的声音）。"
-    },
-    {
-     "en": "skin (",
-     "zh": "某些水果和蔬菜的)皮，壳",
-     "core": false,
-     "phonetic": "/skɪn/",
-     "example": "Don't throw the banana skin on the ground.",
-     "tip": "人的皮肤叫skin，水果的外皮也叫skin。"
-    },
-    {
-     "en": "pick up",
-     "zh": "捡起",
+     "en": "mother",
+     "zh": "母亲，妈妈",
      "core": true,
-     "phonetic": "/pɪk ʌp/",
-     "example": "Tina picks up the litter from the street.",
-     "tip": "pick是挑，up是向上，把东西从下往上挑起来就是捡起。"
+     "phonetic": "/ˈmʌðə/",
+     "example": "This is my mother.",
+     "tip": "mother 中的 other 可以联想成“妈妈和我在一起”。"
     },
     {
-     "en": "throw",
-     "zh": "抛，扔",
-     "core": false,
-     "phonetic": "/θrəʊ/",
-     "example": "Do not throw rubbish out of the window.",
-     "tip": "注意咬舌音 /θ/，动作像用力把手里的东西甩出去。"
-    },
-    {
-     "en": "will",
-     "zh": "将，将要",
+     "en": "father",
+     "zh": "父亲，爸爸",
      "core": true,
-     "phonetic": "/wɪl/",
-     "example": "We will help keep our city clean.",
-     "tip": "表示未来的打算或承诺，常用于一般将来时。"
+     "phonetic": "/ˈfɑːðə/",
+     "example": "This is my father.",
+     "tip": "father 听起来像“发达”，爸爸让家更发达。"
     },
     {
-     "en": "fall",
-     "zh": "突然倒下，跌倒",
-     "core": false,
-     "phonetic": "/fɔːl/",
-     "example": "Billy falls down because of the banana skin.",
-     "tip": "脚下一滑，身体向下 fall（落）下来。"
-    },
-    {
-     "en": "go plogging",
-     "zh": "去拾荒慢跑",
-     "core": false,
-     "phonetic": "/ɡəʊ ˈplɒɡɪŋ/",
-     "example": "My father goes plogging every Sunday morning.",
-     "tip": "jogging(慢跑) + picking up litter(捡垃圾) = plogging。"
-    },
-    {
-     "en": "jogging",
-     "zh": "慢跑锻炼",
-     "core": false,
-     "phonetic": "/ˈdʒɒɡɪŋ/",
-     "example": "Running and jogging are good for health.",
-     "tip": "比跑步慢一点，轻松地在路上跑动。"
-    },
-    {
-     "en": "at the same time",
-     "zh": "同时，一起",
-     "core": false,
-     "phonetic": "/æt ðə seɪm taɪm/",
-     "example": "They can jog and pick up rubbish at the same time.",
-     "tip": "same是相同的，time是时间，在同一时刻做两件事。"
-    },
-    {
-     "en": "gate",
-     "zh": "大门",
-     "core": false,
-     "phonetic": "/ɡeɪt/",
-     "example": "Please close the gate when you leave.",
-     "tip": "通常指院子、公园或学校的大铁门。"
-    },
-    {
-     "en": "on time",
-     "zh": "准时，按时",
+     "en": "dad",
+     "zh": "爸爸",
      "core": true,
-     "phonetic": "/ɒn taɪm/",
-     "example": "We must start cleaning on time.",
-     "tip": "正好在约定的时间点，不早也不晚。"
+     "phonetic": "/dæd/",
+     "example": "This is my dad.",
+     "tip": "dad 是对爸爸的亲昵称呼。"
     },
     {
-     "en": "cleaning",
-     "zh": "打扫，清洁",
+     "en": "mum (AmE mom)",
+     "zh": "妈妈",
      "core": true,
-     "phonetic": "/ˈkliːnɪŋ/",
-     "example": "Cleaning the park is a meaningful activity.",
-     "tip": "clean是动词打扫，加ing变成名词或进行时态。"
+     "phonetic": "/mʌm/",
+     "example": "Good evening, Mum.",
+     "tip": "mum 是英式英语中的“妈妈”。"
     },
     {
-     "en": "group",
-     "zh": "组，群",
-     "core": false,
-     "phonetic": "/ɡruːp/",
-     "example": "A group of students helps to clean the street.",
-     "tip": "一群人聚在一起行动，就像字母g后面跟着roup。"
+     "en": "brother",
+     "zh": "哥哥，弟弟",
+     "core": true,
+     "phonetic": "/ˈbrʌðə/",
+     "example": "He's my brother.",
+     "tip": "brother 中的 bro 可以联想成“兄弟”。"
     },
     {
-     "en": "start",
-     "zh": "发起",
+     "en": "baby",
+     "zh": "婴儿",
+     "core": true,
+     "phonetic": "/ˈbeɪbi/",
+     "example": "The baby is great.",
+     "tip": "baby 听起来像“贝比”，指小宝宝。"
+    },
+    {
+     "en": "sister",
+     "zh": "姐姐，妹妹",
+     "core": true,
+     "phonetic": "/ˈsɪstə/",
+     "example": "She's my sister.",
+     "tip": "sister 中的 sis 是对姐妹的亲昵称呼。"
+    },
+    {
+     "en": "Good evening.",
+     "zh": "晚上好。",
+     "core": true,
+     "phonetic": "/ˌɡʊd ˈiːvnɪŋ/",
+     "example": "Good evening, Mum.",
+     "tip": "evening 是“晚上”，晚上见面说 Good evening.。"
+    },
+    {
+     "en": "quick",
+     "zh": "快，快点。",
      "core": false,
-     "phonetic": "/stɑːt/",
-     "example": "Let's start a campaign to keep the city clean.",
-     "tip": "开始做某事，这里是发起活动的意思。"
+     "phonetic": "/kwɪk/",
+     "example": "Quick!",
+     "tip": "quick 含有“快”的意思，看到它就快一点。"
+    },
+    {
+     "en": "look",
+     "zh": "看，瞧",
+     "core": true,
+     "phonetic": "/lʊk/",
+     "example": "Look at my family.",
+     "tip": "look 和“路可”音近，看到东西可以说 look。"
+    },
+    {
+     "en": "the",
+     "zh": "这个，这些，那个，那些",
+     "core": true,
+     "phonetic": "/ðə, ðiː/",
+     "example": "The baby is great.",
+     "tip": "the 常放在名词前，表示特指的人或物。"
+    },
+    {
+     "en": "pond",
+     "zh": "池塘，水池",
+     "core": false,
+     "phonetic": "/pɒnd/",
+     "example": "The pond is blue.",
+     "tip": "pond 和“碰的”音近，可以联想池塘边不要乱碰水。"
+    },
+    {
+     "en": "who",
+     "zh": "谁，什么人",
+     "core": true,
+     "phonetic": "/huː/",
+     "example": "Who's he?",
+     "tip": "who 用来问“谁”。"
+    },
+    {
+     "en": "great",
+     "zh": "极好的，好棒的",
+     "core": true,
+     "phonetic": "/ɡreɪt/",
+     "example": "Great!",
+     "tip": "great 表示“很棒”，得到表扬时可以说 Great!。"
+    },
+    {
+     "en": "come",
+     "zh": "来",
+     "core": true,
+     "phonetic": "/kʌm/",
+     "example": "Come and meet my family.",
+     "tip": "come 表示“来”，come here 就是“到这里来”。"
+    },
+    {
+     "en": "meet",
+     "zh": "相识，结识，被引见介绍（给某人）",
+     "core": true,
+     "phonetic": "/miːt/",
+     "example": "Come and meet my family.",
+     "tip": "meet 是“见面、认识”。"
+    },
+    {
+     "en": "family",
+     "zh": "家，家庭",
+     "core": true,
+     "phonetic": "/ˈfæməli/",
+     "example": "Come and meet my family.",
+     "tip": "family 里有家人，表示“家庭”。"
+    },
+    {
+     "en": "say",
+     "zh": "说",
+     "core": true,
+     "phonetic": "/seɪ/",
+     "example": "Say hello, Liu Hao.",
+     "tip": "say 表示“说”，say hello 就是“说你好”。"
     }
    ],
    "sentences": [
     {
-     "en": "I'll/We'll/You'll/They'll/He'll/She'll go plogging in the park this Saturday morning."
+     "en": "Who's she?"
     },
     {
-     "en": "Hi, everyone! My name is Yang Ling. I want to start a cleaning group."
+     "en": "Hi, Sam."
     },
     {
-     "en": "In the group, we ________ (make) posters to ask others to join. We will ________ (clean) a different place every Saturday. This weekend, we ________ (help) in Happy Tree Park. I ________ (bring) the rubbish bags."
+     "en": "Hi, Bobby."
     },
     {
-     "en": "Who wants to join? It ________ (be) a busy but wonderful day!"
+     "en": "This is my mum."
     },
     {
-     "en": "This is great! I'll join!"
+     "en": "Good evening."
     },
     {
-     "en": "Bobby and Tina are walking home."
+     "en": "This is my dad."
     },
     {
-     "en": "Our city is clean and beautiful. I like living here."
+     "en": "Quick! Look in the pond."
     },
     {
-     "en": "Bobby throws a banana skin on the ground."
+     "en": "Hello, I'm Bobby. He's Sam."
     }
    ],
    "passage": {
-    "title": "Let's go plogging",
-    "page": 63,
+    "title": "Meeting Liu Tao’s family",
+    "page": 46,
     "lines": [
-     "Liu Tao: What's your plan for the weekend, Su Hai?",
-     "Su Hai: I'll go plogging with my family.",
-     "Liu Tao: Plogging? What's that?",
-     "Su Hai: It's jogging and picking up rubbish at the same time. It can keep us healthy and make our city clean!",
-     "Liu Tao: That sounds great! Can I join you?",
-     "Su Hai: Sure! We'll go plogging in the park this Saturday morning. Let's meet at the school gate at nine o'clock.",
-     "Liu Tao: OK. I'll be here on time.",
-     "Su Hai: See you then.",
-     "Su Hai & Su Yang: Good morning!",
-     "Other students: Good morning!",
-     "Su Hai: Nice to see all of you!",
-     "Wang Bing: We all want to go plogging!",
-     "Su Hai: It's fun. You'll like it.",
-     "Su Yang: Here are the rubbish bags.",
-     "Su Hai: Look at all this rubbish!",
-     "Wang Bing: We did a great job!",
-     "Yang Ling: Let's go plogging again next weekend!",
-     "Others: All right!",
-     "we'll = we will",
-     "you'll = you will",
-     "Tip",
-     "Learn more about plogging.",
-     "See page 109.",
-     "How can the students keep the city clean?"
+     "Meeting Liu Tao’s family",
+     "Su Hai: Hi, Liu Tao.",
+     "Liu Tao: Hello, Su Hai. Come and meet my family.",
+     "Liu Tao: This is my mother.",
+     "Liu Tao: This is my father.",
+     "Su Hai: Hi, I’m Su Hai.",
+     "Liu Tao: Hello, Su Hai.",
+     "Who's he?",
+     "He's my brother.",
+     "Say hello, Liu Hao.",
+     "Hello!",
+     "Who's she?",
+     "She's my sister, Su Yang.",
+     "Nice to meet you, Su Yang.",
+     "Hi! Nice to meet you too.",
+     "Who are in Liu Tao's family?"
     ]
    },
    "quiz": [
     {
-     "q": "Billy fell down because someone threw a banana ___ on the ground.",
+     "q": "Who's he? ___ my brother.",
      "options": [
-      "skin",
-      "bin",
-      "gate"
+      "He's",
+      "She's",
+      "I'm"
      ],
      "answer": 0,
-     "explain": "banana skin意为香蕉皮，根据课文情境，Billy是因为踩到香蕉皮摔倒的。"
+     "explain": "he 指男孩或男性，所以用 He's，意思是“他是我的哥哥或弟弟”。"
     },
     {
-     "q": "We should ___ the rubbish and put it into the bin.",
+     "q": "Who's she? ___ my sister.",
      "options": [
-      "throw",
-      "pick up",
-      "fall"
-     ],
-     "answer": 1,
-     "explain": "pick up意为捡起，保持城市干净需要捡起垃圾而不是乱扔(throw)。"
-    },
-    {
-     "q": "Tina and Bobby walk Billy home. They want to keep the city ___.",
-     "options": [
-      "dirty",
-      "clean",
-      "noisy"
-     ],
-     "answer": 1,
-     "explain": "本单元主题是Keeping our city clean，即保持城市清洁。"
-    },
-    {
-     "q": "Some people go ___ to exercise and collect litter at the same time.",
-     "options": [
-      "swimming",
-      "shopping",
-      "plogging"
+      "I'm",
+      "He's",
+      "She's"
      ],
      "answer": 2,
-     "explain": "plogging是拾荒慢跑，结合了jogging和picking up litter，符合文中提到的环保运动方式。"
+     "explain": "she 指女孩或女性，所以用 She's，意思是“她是我的姐姐或妹妹”。"
+    },
+    {
+     "q": "___ is my mother.",
+     "options": [
+      "This",
+      "Hello",
+      "Who"
+     ],
+     "answer": 0,
+     "explain": "介绍身边的人用 This is，意思是“这是我的妈妈”。"
+    },
+    {
+     "q": "___ evening.",
+     "options": [
+      "This",
+      "Who",
+      "Good"
+     ],
+     "answer": 2,
+     "explain": "晚上见面时说 Good evening，意思是“晚上好”。"
     }
    ]
   },
   {
    "unit": 6,
-   "module": "Module 2 Our world",
-   "title": "Going green",
-   "titleZh": "践行绿色",
-   "bigQuestion": "How can you live a green life?",
+   "module": "Module 2 My family and me",
+   "title": "Is he your grandpa?",
+   "titleZh": "他是你爷爷吗",
+   "bigQuestion": "Is he your grandpa?",
    "pages": [
-    70,
-    81
+    50,
+    57
    ],
    "status": "ready",
    "words": [
     {
-     "en": "go green",
-     "zh": "践行绿色环保的生活方式",
+     "en": "grandfather (grandpa)",
+     "zh": "祖父，外祖父",
      "core": true,
-     "phonetic": "/ɡəʊ ɡriːn/",
-     "example": "We should go green to protect our planet.",
-     "tip": "go(去) + green(绿色)，走向绿色生活。"
+     "phonetic": "/ˈɡrænfɑːðə (ˈɡrænpɑː)/",
+     "example": "My grandfather is here.",
+     "tip": "grandpa 是 grandfather 的简短说法。"
     },
     {
-     "en": "turn off",
-     "zh": "关掉",
+     "en": "uncle",
+     "zh": "舅父，叔父，伯父，姑父，姨父",
      "core": true,
-     "phonetic": "/tɜːn ɒf/",
-     "example": "Please turn off the light when you leave.",
-     "tip": "turn(转) + off(断开)，转动开关使其关闭。"
+     "phonetic": "/ˈʌŋkəl/",
+     "example": "This is my uncle.",
+     "tip": "uncle 中的 un 可联想“叔叔”。"
     },
     {
-     "en": "tap",
-     "zh": "水龙头",
-     "core": false,
-     "phonetic": "/tæp/",
-     "example": "Don't forget to close the tap after washing hands.",
-     "tip": "想象轻轻敲击(tap)水龙头的声音。"
-    },
-    {
-     "en": "light",
-     "zh": "电灯",
+     "en": "aunt",
+     "zh": "舅母，婶母，伯母，姑母，姨母",
      "core": true,
-     "phonetic": "/laɪt/",
-     "example": "Turn off the light to save electricity.",
-     "tip": "light既指光也指发光的灯。"
+     "phonetic": "/ɑːnt/",
+     "example": "She’s my aunt.",
+     "tip": "aunt 读音像“啊特”，表示阿姨。"
     },
     {
-     "en": "both",
-     "zh": "两者都",
-     "core": false,
-     "phonetic": "/bəʊθ/",
-     "example": "Both Bobby and Willy want to help the Earth.",
-     "tip": "b-o-t-h，两个一起。"
-    },
-    {
-     "en": "side",
-     "zh": "边；侧",
-     "core": false,
-     "phonetic": "/saɪd/",
-     "example": "There is a rubbish bin on each side of the street.",
-     "tip": "s-i-d-e，物体的边缘或一侧。"
-    },
-    {
-     "en": "eat up",
-     "zh": "吃光；吃完",
+     "en": "grandmother (grandma)",
+     "zh": "祖母，外祖母",
      "core": true,
-     "phonetic": "/iːt ʌp/",
-     "example": "You must eat up all your vegetables.",
-     "tip": "eat(吃) + up(彻底)，吃得干干净净。"
+     "phonetic": "/ˈɡrænmʌðə (ˈɡrænmɑː)/",
+     "example": "My grandmother is here.",
+     "tip": "grandma 是 grandmother 的简短说法。"
     },
     {
-     "en": "project",
-     "zh": "项目；工程",
-     "core": false,
-     "phonetic": "/ˈprɒdʒekt/",
-     "example": "Our class has a green project this term.",
-     "tip": "pro-(向前) + ject(投掷)，向前推进的计划。"
-    },
-    {
-     "en": "the Earth",
-     "zh": "地球",
+     "en": "cousin",
+     "zh": "堂兄（弟），堂姐（妹），表兄（弟），表姐（妹）",
      "core": true,
-     "phonetic": "/ðə ɜːθ/",
-     "example": "Help the Earth, Help Us.",
-     "tip": "特指我们居住的星球，首字母大写且加the。"
+     "phonetic": "/ˈkʌzən/",
+     "example": "Is it your cousin?",
+     "tip": "cousin 表示堂、表兄弟姐妹。"
     },
     {
-     "en": "colour (AmE color)",
-     "zh": "颜色",
+     "en": "cool",
+     "zh": "妙极的，酷的",
      "core": true,
-     "phonetic": "/ˈkʌlə(r)/",
-     "example": "Green is the colour of nature.",
-     "tip": "英式拼写带u，美式不带。"
+     "phonetic": "/kuːl/",
+     "example": "He is cool.",
+     "tip": "cool 可以表示“酷的、很棒的”。"
     },
     {
-     "en": "hour",
-     "zh": "小时",
+     "en": "me",
+     "zh": "我",
      "core": true,
-     "phonetic": "/ˈaʊə(r)/",
-     "example": "I brush my teeth for two minutes every hour.",
-     "tip": "h不发音，读作/ˈaʊə(r)/。"
+     "phonetic": "/miː/",
+     "example": "It’s me!",
+     "tip": "me 表示“我”，常用在别人问“谁”时。"
     },
     {
-     "en": "save",
-     "zh": "节约；拯救",
+     "en": "wow",
+     "zh": "哇，呀",
      "core": false,
-     "phonetic": "/seɪv/",
-     "example": "We need to save water and energy.",
-     "tip": "s-a-v-e，把东西留住，即节约。"
+     "phonetic": "/waʊ/",
+     "example": "Wow! You have a big family.",
+     "tip": "看到惊喜的东西可以说 Wow!。"
     },
     {
-     "en": "electricity",
-     "zh": "电；电力",
-     "core": false,
-     "phonetic": "/ɪˌlekˈtrɪsəti/",
-     "example": "Turning off lights saves electricity.",
-     "tip": "长单词，注意重音在/trɪs/上。"
-    },
-    {
-     "en": "last",
-     "zh": "持续",
+     "en": "big",
+     "zh": "大的",
      "core": true,
-     "phonetic": "/lɑːst/",
-     "example": "The shower lasts for ten minutes.",
-     "tip": "除了“最后的”，还有“持续”的意思。"
+     "phonetic": "/bɪɡ/",
+     "example": "You have a big family.",
+     "tip": "big 和“大的”意思相近。"
     },
     {
-     "en": "brush",
-     "zh": "刷；刷子",
-     "core": false,
-     "phonetic": "/brʌʃ/",
-     "example": "Brush your teeth twice a day.",
-     "tip": "b-r-u-s-h，动作和工具同名。"
-    },
-    {
-     "en": "tooth",
-     "zh": "牙齿",
-     "core": false,
-     "phonetic": "/tuːθ/",
-     "example": "A healthy tooth is important.",
-     "tip": "复数是teeth，注意元音变化。"
-    },
-    {
-     "en": "waste",
-     "zh": "浪费；废物",
-     "core": false,
-     "phonetic": "/weɪst/",
-     "example": "Don't waste food or water.",
-     "tip": "与past(过去)押韵，不要浪费过去的时间。"
-    },
-    {
-     "en": "vegetable",
-     "zh": "蔬菜",
+     "en": "it",
+     "zh": "指婴儿，尤指性别不详者",
      "core": true,
-     "phonetic": "/ˈvedʒtəbl/",
-     "example": "Eat more vegetables to stay healthy.",
-     "tip": "中间有/t/音，常被吞掉，读作/ˈvedʒtəbl/。"
+     "phonetic": "/ɪt/",
+     "example": "Is it your cousin?",
+     "tip": "it 可以指代婴儿或不知道性别的人。"
     },
     {
-     "en": "plastic",
-     "zh": "塑料",
-     "core": false,
-     "phonetic": "/ˈplæstɪk/",
-     "example": "Try to use less plastic bags.",
-     "tip": "pla-stic，常见的环保话题词汇。"
+     "en": "happy",
+     "zh": "幸福的",
+     "core": true,
+     "phonetic": "/ˈhæpi/",
+     "example": "You have a happy family!",
+     "tip": "happy 表示开心、幸福。"
+    },
+    {
+     "en": "love",
+     "zh": "爱，热爱",
+     "core": true,
+     "phonetic": "/lʌv/",
+     "example": "I love my family.",
+     "tip": "love 表示“爱”。"
     }
    ],
    "sentences": [
     {
-     "en": "Will you/we/they/he/she take part?"
+     "en": "Bobby: Who's he?"
     },
     {
-     "en": "What will you/we/they/he/she do to take care of the Earth?"
+     "en": "Sam: He's my grandfather John."
     },
     {
-     "en": ": ________ we go shopping tomorrow, Mum?"
+     "en": "Bobby: Is he your father?"
     },
     {
-     "en": ": Yes, ________. We'll do some shopping in the new supermarket."
+     "en": "Sam: Yes, he is. He's John too."
     },
     {
-     "en": ": Great! What ________ we ________?"
+     "en": "Sam: Who's this boy?"
     },
     {
-     "en": ": We'll buy some vegetables, eggs and fish."
+     "en": "Bobby: Cool!"
     },
     {
-     "en": ": OK. I'll take a cloth bag. ________ Dad go with us too?"
+     "en": "Sam: He's my cousin John."
     },
     {
-     "en": ": No, ________. He'll stay at home and do some chores."
+     "en": "Sam: Look, Bobby. This is ..."
     }
    ],
    "passage": {
-    "title": "Take care of the Earth",
-    "page": 75,
+    "title": "This is my family",
+    "page": 54,
     "lines": [
-     "Miss Li: Every year, people in many countries turn off their lights for an hour. Do you know this activity?",
-     "Wang Bing: Yes, it's Earth Hour. It tells people to save electricity.",
-     "Miss Li: That's right. Earth Hour is on the last Saturday of March. It lasts from 8:30 to 9:30 in the evening. Will you take part?",
-     "Yang Ling: Yes, I will. It'll be great to help the Earth.",
-     "Other students: Me too!",
-     "Miss Li: What else will you do to take care of the Earth?",
-     "Su Hai: I'll save water. We should turn off the tap when we brush our teeth.",
-     "Liu Tao: I won't waste food. We should always eat up all our food.",
-     "Mike: I'll save paper. We should use both sides of the paper.",
-     "Miss Li: Wonderful! These small things will help our Mother Earth in a big way. Let's work together!",
-     "Tip: Learn more about Earth Hour. See page 109."
+     "This is my family",
+     "Look! This is my family.",
+     "Wow! You have a big family.",
+     "Yes. My grandpa, grandma, father, mother, uncle, aunt ...",
+     "Is he your father?",
+     "No, he isn’t.",
+     "Who’s he?",
+     "He’s my grandpa.",
+     "isn’t = is not",
+     "Is she your mother?",
+     "No, she isn’t.",
+     "She’s my aunt.",
+     "Who’s the baby?",
+     "Is it your cousin?",
+     "No, it isn’t.",
+     "It’s me!",
+     "You have a happy family!",
+     "Yes. I love my family.",
+     "Listen, read and imitate.",
+     "See page 77.",
+     "What do you think of Liu Tao’s big family?"
     ]
    },
    "quiz": [
     {
-     "q": "Please ___ the tap when you are not using it.",
+     "q": "Who is he? He’s my ___.",
      "options": [
-      "turn on",
-      "turn off",
-      "put on"
-     ],
-     "answer": 1,
-     "explain": "根据语境“不用时”，应该关掉(turn off)水龙头，而不是打开(turn on)。"
-    },
-    {
-     "q": "We should eat up all the ___ to avoid wasting food.",
-     "options": [
-      "vegetables",
-      "plastics",
-      "lights"
+      "grandpa",
+      "cousin",
+      "aunt"
      ],
      "answer": 0,
-     "explain": "eat up意为“吃光”，宾语应该是食物，即vegetables(蔬菜)。"
+     "explain": "grandpa 表示“爷爷或外公”，所以选 grandpa。"
     },
     {
-     "q": "How can we live a green life? We can save ___ by turning off the lights.",
+     "q": "Is she your mother? No, she ___.",
      "options": [
-      "water",
-      "electricity",
-      "paper"
+      "it",
+      "is",
+      "isn’t"
+     ],
+     "answer": 2,
+     "explain": "回答“不是”用 No, she isn’t。"
+    },
+    {
+     "q": "This is my ___.",
+     "options": [
+      "happy",
+      "family",
+      "cool"
      ],
      "answer": 1,
-     "explain": "关灯(turn off the lights)是为了节约电力(electricity)。"
+     "explain": "family 表示“家庭”，This is my family 表示“这是我的家庭”。"
     },
     {
-     "q": "___ Bobby and Willy want to help the Earth.",
+     "q": "Who’s the baby? It’s ___!",
      "options": [
-      "Both",
-      "All",
-      "One"
+      "uncle",
+      "me",
+      "grandma"
      ],
-     "answer": 0,
-     "explain": "Bobby和Willy是两个人，表示“两者都”用Both。All用于三者及以上。"
+     "answer": 1,
+     "explain": "It’s me 表示“是我”，所以选 me。"
     }
    ]
   },
   {
    "unit": 7,
-   "module": "Module 2 Our world",
-   "title": "Old things, new life",
-   "titleZh": "旧物新用",
-   "bigQuestion": "What can you do with old things?",
+   "module": "Module 2 My family and me",
+   "title": "Happy Birthday!",
+   "titleZh": "生日快乐",
+   "bigQuestion": "How old are you?",
    "pages": [
-    82,
-    93
+    58,
+    65
    ],
    "status": "ready",
    "words": [
     {
-     "en": "glass",
-     "zh": "玻璃；玻璃杯",
+     "en": "Happy Birthday!",
+     "zh": "生日快乐！",
      "core": true,
-     "phonetic": "/ɡlɑːs/",
-     "example": "There I made friends with plastic cups, plastic bottles and glass bottles.",
-     "tip": "注意区分：作为材料时不可数，作为杯子时可数。"
+     "phonetic": "/ˌhæpi ˈbɜːθdeɪ/",
+     "example": "Happy Birthday, Taotao.",
+     "tip": "过生日时可以对别人说这句话。"
     },
     {
-     "en": "bottle",
-     "zh": "瓶子",
-     "core": false,
-     "phonetic": "/ˈbɒtl/",
-     "example": "There I made friends with plastic cups, plastic bottles and glass bottles.",
-     "tip": "词尾 -tle 发音轻快，类似 little。"
-    },
-    {
-     "en": "cardboard",
-     "zh": "硬纸板",
-     "core": false,
-     "phonetic": "/ˈkɑːdbɔːd/",
-     "example": "Hello! I'm a cardboard box.",
-     "tip": "由 card (卡片) + board (板) 组成，指做纸箱的材料。"
-    },
-    {
-     "en": "box",
-     "zh": "盒子",
+     "en": "one",
+     "zh": "一",
      "core": true,
-     "phonetic": "/bɒks/",
-     "example": "Hello! I'm a cardboard box.",
-     "tip": "复数形式是 boxes，注意加 es。"
+     "phonetic": "/wʌn/",
+     "example": "One, two, three, four, five!",
+     "tip": "one 的开头音像“万”。"
     },
     {
-     "en": "be made of",
-     "zh": "由……制成（能看出原材料）",
+     "en": "two",
+     "zh": "二",
      "core": true,
-     "phonetic": "/biː meɪd əv/",
-     "example": "The table is made of wood.",
-     "tip": "强调物理变化，成品中仍保留原材料特征。"
+     "phonetic": "/tuː/",
+     "example": "One, two, three, four, five!",
+     "tip": "two 和 too 发音相同。"
     },
     {
-     "en": "button",
-     "zh": "纽扣；按钮",
-     "core": false,
-     "phonetic": "/ˈbʌtn/",
-     "example": "Please press the red button to start.",
-     "tip": "衣服上的扣子和机器上的按钮都用这个词。"
-    },
-    {
-     "en": "happen",
-     "zh": "发生",
-     "core": false,
-     "phonetic": "/ˈhæpən/",
-     "example": "What happened to the cardboard box?",
-     "tip": "常用句型 What happens/happened to sb/sth? 询问某事/某人怎么了。"
-    },
-    {
-     "en": "hat",
-     "zh": "帽子",
-     "core": false,
-     "phonetic": "/hæt/",
-     "example": "He wears a black hat.",
-     "tip": "通常指有帽檐的帽子，区别于 cap (鸭舌帽)。"
-    },
-    {
-     "en": "do with",
-     "zh": "处理；对待",
+     "en": "three",
+     "zh": "三",
      "core": true,
-     "phonetic": "/duː wɪð/",
-     "example": "What will they do with me?",
-     "tip": "常与 what 连用：What did you do with...? 你如何处理了……？"
+     "phonetic": "/θriː/",
+     "example": "One, two, three, four, five!",
+     "tip": "three 中的 th 要咬舌发音。"
     },
     {
-     "en": "throw away",
-     "zh": "扔掉；丢弃",
-     "core": false,
-     "phonetic": "/θrəʊ əˈweɪ/",
-     "example": "Will they throw me away?",
-     "tip": "代词作宾语时放在中间，如 throw it away。"
-    },
-    {
-     "en": "recycling bin",
-     "zh": "回收箱",
-     "core": false,
-     "phonetic": "/rɪˈsaɪklɪŋ bɪn/",
-     "example": "In the afternoon, they picked me up and put me in a recycling bin.",
-     "tip": "bin 是英式英语中的“垃圾桶”，美式常用 trash can。"
-    },
-    {
-     "en": "truck",
-     "zh": "卡车",
-     "core": false,
-     "phonetic": "/trʌk/",
-     "example": "Then I got on a truck.",
-     "tip": "注意 r 的卷舌音，不要读成 track (轨道)。"
-    },
-    {
-     "en": "make friends with",
-     "zh": "与……交朋友",
+     "en": "four",
+     "zh": "四",
      "core": true,
-     "phonetic": "/meɪk frɛndz wɪð/",
-     "example": "There I made friends with plastic cups...",
-     "tip": "friend 要用复数 friends。"
+     "phonetic": "/fɔː/",
+     "example": "One, two, three, four, five!",
+     "tip": "four 和 four fingers 中的 four 都是“四”。"
     },
     {
-     "en": "recycling centre",
-     "zh": "回收中心",
-     "core": false,
-     "phonetic": "/rɪˈsaɪklɪŋ ˈsentə/",
-     "example": "The truck took us to a recycling centre.",
-     "tip": "centre 是英式拼写，美式为 center。"
-    },
-    {
-     "en": "go to sleep",
-     "zh": "入睡；睡觉",
+     "en": "five",
+     "zh": "五",
      "core": true,
-     "phonetic": "/ɡəʊ tə sliːp/",
-     "example": "There I went to sleep. What a long sleep!",
-     "tip": "表示进入睡眠状态的动作。"
+     "phonetic": "/faɪv/",
+     "example": "One, two, three, four, five!",
+     "tip": "five 可以联想到一只手有五根手指。"
     },
     {
-     "en": "sort",
-     "zh": "分类；整理",
-     "core": false,
-     "phonetic": "/sɔːt/",
-     "example": "The workers there put us into different groups to sort them.",
-     "tip": "sort out 意为“解决”或“理清”。"
-    },
-    {
-     "en": "recycle",
-     "zh": "回收利用",
-     "core": false,
-     "phonetic": "/ˌriːˈsaɪkl/",
-     "example": "We should recycle paper and plastic.",
-     "tip": "前缀 re- 表示“再次”，cycle 表示“循环”。"
-    },
-    {
-     "en": "grey",
-     "zh": "灰色的",
-     "core": false,
-     "phonetic": "/ɡreɪ/",
-     "example": "The sky is grey today.",
-     "tip": "英式拼写为 grey，美式拼写为 gray。"
-    },
-    {
-     "en": "clever",
-     "zh": "聪明的",
+     "en": "six",
+     "zh": "六",
      "core": true,
-     "phonetic": "/ˈklevə/",
-     "example": "That boy is very clever.",
-     "tip": "形容人头脑灵活，反应快。"
+     "phonetic": "/sɪks/",
+     "example": "I am six.",
+     "tip": "six 的开头是短音 /sɪ/。"
+    },
+    {
+     "en": "seven",
+     "zh": "七",
+     "core": true,
+     "phonetic": "/ˈsevən/",
+     "example": "I am seven.",
+     "tip": "seven 有两个音节。"
+    },
+    {
+     "en": "eight",
+     "zh": "八",
+     "core": true,
+     "phonetic": "/eɪt/",
+     "example": "I am eight.",
+     "tip": "eight 和 eight apples 中的 eight 都是“八”。"
+    },
+    {
+     "en": "nine",
+     "zh": "九",
+     "core": true,
+     "phonetic": "/naɪn/",
+     "example": "I’m nine.",
+     "tip": "nine 中的 i 发字母音。"
+    },
+    {
+     "en": "ten",
+     "zh": "十",
+     "core": true,
+     "phonetic": "/ten/",
+     "example": "I am ten.",
+     "tip": "ten 是 1 到 10 的最后一个数字。"
+    },
+    {
+     "en": "now",
+     "zh": "现在，此刻",
+     "core": true,
+     "phonetic": "/naʊ/",
+     "example": "Now, look!",
+     "tip": "now 表示“现在”。"
+    },
+    {
+     "en": "want",
+     "zh": "要，想要",
+     "core": true,
+     "phonetic": "/wɒnt/",
+     "example": "I want some toys for my boys.",
+     "tip": "want 表示“想要”。"
+    },
+    {
+     "en": "car",
+     "zh": "小汽车，轿车",
+     "core": true,
+     "phonetic": "/kɑː/",
+     "example": "I want a car.",
+     "tip": "car 中的 ar 发长音 /ɑː/。"
+    },
+    {
+     "en": "book",
+     "zh": "书",
+     "core": true,
+     "phonetic": "/bʊk/",
+     "example": "This is my book.",
+     "tip": "book 中的 oo 发短音 /ʊ/。"
+    },
+    {
+     "en": "ball",
+     "zh": "球",
+     "core": true,
+     "phonetic": "/bɔːl/",
+     "example": "This is a ball.",
+     "tip": "ball 中的 all 发长音 /ɔːl/。"
+    },
+    {
+     "en": "cake",
+     "zh": "蛋糕，糕饼",
+     "core": true,
+     "phonetic": "/keɪk/",
+     "example": "I want some cake.",
+     "tip": "cake 末尾的 e 不发音。"
+    },
+    {
+     "en": "How lovely!",
+     "zh": "真可爱！",
+     "core": true,
+     "phonetic": "/haʊ ˈlʌvli/",
+     "example": "How lovely!",
+     "tip": "看到可爱的东西可以这样说。"
+    },
+    {
+     "en": "Can I help you?",
+     "zh": "要帮忙吗？",
+     "core": true,
+     "phonetic": "/kæn aɪ ˈhelp juː/",
+     "example": "Can I help you?",
+     "tip": "这是主动询问别人是否需要帮助。"
+    },
+    {
+     "en": "Yes, please.",
+     "zh": "好的，谢谢。",
+     "core": true,
+     "phonetic": "/jes pliːz/",
+     "example": "Yes, please.",
+     "tip": "接受帮助或物品时可以这样说。"
+    },
+    {
+     "en": "some",
+     "zh": "一些",
+     "core": true,
+     "phonetic": "/sʌm/",
+     "example": "I want some toys for my boys.",
+     "tip": "some 表示“一些”。"
+    },
+    {
+     "en": "toy",
+     "zh": "玩具",
+     "core": true,
+     "phonetic": "/tɔɪ/",
+     "example": "I want some toys for my boys.",
+     "tip": "toy 的复数是 toys。"
+    },
+    {
+     "en": "for",
+     "zh": "给，对，供",
+     "core": true,
+     "phonetic": "/fə/",
+     "example": "I want some toys for my boys.",
+     "tip": "for my boys 表示“给我的男孩们”。"
+    },
+    {
+     "en": "OK",
+     "zh": "对，好，行",
+     "core": true,
+     "phonetic": "/ˌəʊˈkeɪ/",
+     "example": "OK!",
+     "tip": "OK 表示“好的”。"
+    },
+    {
+     "en": "How old are you?",
+     "zh": "你多大了？",
+     "core": true,
+     "phonetic": "/haʊ əʊld ɑː juː/",
+     "example": "How old are you?",
+     "tip": "询问年龄时使用这句话。"
+    },
+    {
+     "en": "please",
+     "zh": "请",
+     "core": true,
+     "phonetic": "/pliːz/",
+     "example": "Three. I want this, please.",
+     "tip": "please 可以让请求听起来更有礼貌。"
+    },
+    {
+     "en": "here",
+     "zh": "到这儿，在这里",
+     "core": true,
+     "phonetic": "/hɪə/",
+     "example": "Please come here.",
+     "tip": "here 表示“这里”。"
+    },
+    {
+     "en": "love",
+     "zh": "喜欢，喜爱",
+     "core": true,
+     "phonetic": "/lʌv/",
+     "example": "I love this.",
+     "tip": "love 表示“喜欢”或“喜爱”。"
+    },
+    {
+     "en": "Here you are.",
+     "zh": "给你。",
+     "core": true,
+     "phonetic": "/hɪə juː ɑː/",
+     "example": "Here you are.",
+     "tip": "把东西递给别人时可以这样说。"
+    },
+    {
+     "en": "You're welcome.",
+     "zh": "别客气。不用谢。",
+     "core": true,
+     "phonetic": "/jɔː ˈwelkəm/",
+     "example": "You're welcome.",
+     "tip": "别人说 Thank you 时可以这样回答。"
+    },
+    {
+     "en": "thanks",
+     "zh": "谢谢",
+     "core": true,
+     "phonetic": "/θæŋks/",
+     "example": "Thanks, Dad!",
+     "tip": "thanks 是比较简短的“谢谢”。"
     }
    ],
    "sentences": [
     {
-     "en": "What a long sleep!"
+     "en": "Thank you! I love you."
     },
     {
-     "en": "Su Hai and Su Yang are tidying their room. Rewrite the underlined sentences with \"what\" or \"how\"."
+     "en": "Happy Birthday, Bobby!"
     },
     {
-     "en": "Look at these books. They're very old."
+     "en": "I'm two now."
     },
     {
-     "en": "Right. Let's throw them away."
+     "en": "One, two."
     },
     {
-     "en": "And the plastic bags. They're very dirty. We need to throw them away too."
+     "en": "I want a car."
     },
     {
-     "en": "OK. Let's sort them first."
+     "en": "I want a book."
     },
     {
-     "en": "That's a great idea. We can recycle these old books. They should go in the blue bin."
+     "en": "I want a ball ..."
     },
     {
-     "en": "What about the dirty plastic bags? Can they go in the blue bin too?"
+     "en": "Bobby! We want the cake!"
     }
    ],
    "passage": {
-    "title": "What a wonderful journey!",
-    "page": 87,
+    "title": "Thanks, Dad!",
+    "page": 62,
     "lines": [
-     "Hello! I'm a cardboard box. I got here in the morning. What will they do with me? Will they throw me away? Oh no!",
-     "In the afternoon, they picked me up and put me in a recycling bin. Then I got on a truck. There I made friends with plastic cups, plastic bottles and glass bottles.",
-     "The truck took us to a recycling centre. The workers there put us into different groups. Then I went into a machine.",
-     "There I went to sleep. What a long sleep!",
-     "Hello again! It's me! Now I'm in a library. Yes, I'm a book now! Children like me very much. How wonderful!",
-     "Next time, I'll become ...",
-     "What happened to the cardboard box?"
+     "Thanks, Dad!",
+     "Look! How lovely!",
+     "One, two, three, four, five!",
+     "Hello! Can I help you?",
+     "Yes, please. I want some toys for my boys.",
+     "OK! How old are you?",
+     "I’m nine.",
+     "Please come here.",
+     "Cool! I love this.",
+     "Three. I want this, please.",
+     "How old are you?",
+     "OK!",
+     "Here you are.",
+     "Thank you!",
+     "You're welcome.",
+     "Hi! How old are you?",
+     "Happy Birthday, Taotao.",
+     "Thanks, Dad!",
+     "I love you.",
+     "Tip",
+     "Talk about age properly.",
+     "See page 77.",
+     "What does Liu Tao get from his birthday?"
     ]
    },
    "quiz": [
     {
-     "q": "What will they ___ with the old cardboard box?",
+     "q": "___, Taotao!",
      "options": [
-      "do",
-      "make",
-      "take"
+      "You're welcome",
+      "How old",
+      "Happy Birthday"
      ],
-     "answer": 0,
-     "explain": "固定搭配 do with，意为“处理、处置”，常与疑问词 what 连用。"
+     "answer": 2,
+     "explain": "祝别人生日快乐要说 Happy Birthday。"
     },
     {
-     "q": "Don't ___ the bottle away. We can recycle it.",
+     "q": "How ___ are you?",
      "options": [
-      "put",
-      "throw",
-      "give"
+      "lovely",
+      "old",
+      "welcome"
      ],
      "answer": 1,
-     "explain": "短语 throw away 意为“扔掉、丢弃”，符合语境中关于回收的建议。"
+     "explain": "询问年龄的句型是 How old are you?。"
     },
     {
-     "q": "The workers at the recycling centre ___ the rubbish into different groups.",
+     "q": "I want some ___.",
      "options": [
-      "sort",
-      "sleep",
-      "happen"
+      "please",
+      "here",
+      "toys"
+     ],
+     "answer": 2,
+     "explain": "想要一些玩具要说 I want some toys。"
+    },
+    {
+     "q": "Here you ___.",
+     "options": [
+      "are",
+      "am",
+      "is"
      ],
      "answer": 0,
-     "explain": "动词 sort 意为“分类、整理”，对应课文中“put us into different groups”的描述。"
-    },
-    {
-     "q": "This chair is ___ wood. You can see the texture clearly.",
-     "options": [
-      "made from",
-      "made of",
-      "made by"
-     ],
-     "answer": 1,
-     "explain": "be made of 用于能看出原材料的情况（物理变化），而 be made from 用于看不出原材料的情况（化学变化）。"
+     "explain": "给别人东西时说 Here you are。"
     }
    ]
   },
   {
    "unit": 8,
-   "module": "Module 2 Our world",
-   "title": "Then and now",
-   "titleZh": "今昔对比",
-   "bigQuestion": "What am I?",
+   "module": "Module 2 My family and me",
+   "title": "I can do this for you",
+   "titleZh": "我能为你做这些",
+   "bigQuestion": "What can you do for your family?",
    "pages": [
-    94,
-    105
+    66,
+    77
    ],
    "status": "ready",
    "words": [
     {
-     "en": "high-speed train",
-     "zh": "高铁",
-     "core": false,
-     "phonetic": "/ˌhaɪ spiːd treɪn/",
-     "example": "The high-speed train is very fast.",
-     "tip": "high(高) + speed(速度) + train(火车)"
-    },
-    {
-     "en": "e-book",
-     "zh": "电子书",
-     "core": false,
-     "phonetic": "/ˈiːbʊk/",
-     "example": "I like reading e-books on my tablet.",
-     "tip": "e代表electronic(电子的)，book是书"
-    },
-    {
-     "en": "meeting",
-     "zh": "会议",
-     "core": false,
-     "phonetic": "/ˈmiːtɪŋ/",
-     "example": "My father has a meeting at work today.",
-     "tip": "meet(遇见/开会) + ing(名词后缀)"
-    },
-    {
-     "en": "shop",
-     "zh": "购物；商店",
+     "en": "can",
+     "zh": "能，会",
      "core": true,
-     "phonetic": "/ʃɒp/",
-     "example": "We often shop online these days.",
-     "tip": "短元音，注意双写p的情况如shopping"
+     "phonetic": "/kæn/",
+     "example": "I can sing.",
+     "tip": "can 表示“能、会”，后面接动作。"
     },
     {
-     "en": "smart",
-     "zh": "聪明的；智能的",
-     "core": false,
-     "phonetic": "/smɑːt/",
-     "example": "This robot is very smart.",
-     "tip": "长元音/aː/，联想smart phone(智能手机)"
-    },
-    {
-     "en": "win",
-     "zh": "赢；获胜",
+     "en": "do",
+     "zh": "做，干，办（某事）",
      "core": true,
-     "phonetic": "/wɪn/",
-     "example": "Our team will win the game.",
-     "tip": "反义词是lose(输)"
+     "phonetic": "/duː/",
+     "example": "I can do this for you.",
+     "tip": "do 有“做”的意思。"
     },
     {
-     "en": "surprise",
-     "zh": "惊喜；使惊讶",
-     "core": false,
-     "phonetic": "/səˈpraɪz/",
-     "example": "He'll give us a surprise.",
-     "tip": "课文原句：他会给我们一个惊喜。重音在第二个音节"
-    },
-    {
-     "en": "wrong",
-     "zh": "错误的；出毛病",
+     "en": "for",
+     "zh": "为了",
      "core": true,
-     "phonetic": "/rɒŋ/",
-     "example": "What's wrong with the robot?",
-     "tip": "课文原句：机器人怎么了？w不发音"
+     "phonetic": "/fə/",
+     "example": "I can do this for you.",
+     "tip": "for you 表示“为了你、给你”。"
     },
     {
-     "en": "change",
-     "zh": "改变",
-     "core": false,
-     "phonetic": "/tʃeɪndʒ/",
-     "example": "Technology changes our life.",
-     "tip": "课文问题涉及：How did... change..."
-    },
-    {
-     "en": "life",
-     "zh": "生活；生命",
-     "core": false,
-     "phonetic": "/laɪf/",
-     "example": "It makes our life better.",
-     "tip": "复数形式是lives"
-    },
-    {
-     "en": "in the past",
-     "zh": "在过去",
-     "core": false,
-     "phonetic": "/ɪn ðə pɑːst/",
-     "example": "People traveled by horse in the past.",
-     "tip": "与now(现在)对比使用"
-    },
-    {
-     "en": "travel",
-     "zh": "旅行",
+     "en": "clean",
+     "zh": "使……干净，打扫",
      "core": true,
-     "phonetic": "/ˈtrævəl/",
-     "example": "They went to the park and traveled there.",
-     "tip": "动词和名词同形，英式拼写有时为travelling"
+     "phonetic": "/kliːn/",
+     "example": "We can clean the table.",
+     "tip": "clean table 是“打扫桌子”。"
     },
     {
-     "en": "office",
-     "zh": "办公室",
-     "core": false,
-     "phonetic": "/ˈɒfɪs/",
-     "example": "My mother works in an office.",
-     "tip": "注意第一个音节重读"
-    },
-    {
-     "en": "these days",
-     "zh": "如今；这些天",
+     "en": "table",
+     "zh": "桌子",
      "core": true,
-     "phonetic": "/ðiːz deɪz/",
-     "example": "We pay by phone these days.",
-     "tip": "表示现在的状态，常与一般现在时连用"
+     "phonetic": "/ˈteɪbəl/",
+     "example": "We can clean the table.",
+     "tip": "table 里有 table，想象桌面像一张表。"
     },
     {
-     "en": "work from home",
-     "zh": "在家办公",
+     "en": "draw",
+     "zh": "画，描画",
      "core": true,
-     "phonetic": "/wɜːk frəm həʊm/",
-     "example": "Some people work from home now.",
-     "tip": "固定短语，from表示来源/地点"
+     "phonetic": "/drɔː/",
+     "example": "I can draw.",
+     "tip": "draw 和“画画”联系记忆。"
     },
     {
-     "en": "pay",
-     "zh": "支付",
-     "core": false,
-     "phonetic": "/peɪ/",
-     "example": "Don't pay cash, use your card.",
-     "tip": "过去式和过去分词都是paid"
-    },
-    {
-     "en": "cash",
-     "zh": "现金",
-     "core": false,
-     "phonetic": "/kæʃ/",
-     "example": "In the past, people used cash.",
-     "tip": "与credit card(信用卡)或online payment(在线支付)对比"
-    },
-    {
-     "en": "helper",
-     "zh": "帮手；助手",
-     "core": false,
-     "phonetic": "/ˈhelpə(r)/",
-     "example": "The robot is a good helper.",
-     "tip": "help(帮助) + er(人) = 帮忙的人"
-    },
-    {
-     "en": "fifty",
-     "zh": "五十",
+     "en": "sing",
+     "zh": "唱（歌），演唱",
      "core": true,
-     "phonetic": "/ˈfɪfti/",
-     "example": "There are fifty students in the class.",
-     "tip": "基数词，序数词是fiftieth"
+     "phonetic": "/sɪŋ/",
+     "example": "I can sing.",
+     "tip": "sing 的 ing 像唱歌时的声音。"
     },
     {
-     "en": "email",
-     "zh": "电子邮件",
+     "en": "take pictures",
+     "zh": "拍照",
      "core": true,
-     "phonetic": "/ˈiːmeɪl/",
-     "example": "Send me an email please.",
-     "tip": "e代表electronic，mail是邮件"
+     "phonetic": "/teɪk ˈpɪktʃəz/",
+     "example": "I can take pictures.",
+     "tip": "take pictures 就是“拍照片”。"
     },
     {
-     "en": "technology",
-     "zh": "科技；技术",
+     "en": "dance",
+     "zh": "跳舞",
+     "core": true,
+     "phonetic": "/dɑːns/",
+     "example": "I can dance.",
+     "tip": "dance 中的 d 想象跳舞时的动作。"
+    },
+    {
+     "en": "Are you OK?",
+     "zh": "你没事吧?",
+     "core": true,
+     "phonetic": "/ɑː juː əʊˈkeɪ/",
+     "example": "Are you OK?",
+     "tip": "看到别人不舒服时可以这样问。"
+    },
+    {
+     "en": "dizzy",
+     "zh": "头晕目眩的，眩晕的",
      "core": false,
-     "phonetic": "/tekˈnɒlədʒi/",
-     "example": "New technology helps us a lot.",
-     "tip": "长单词，注意重音在第三个音节no上"
+     "phonetic": "/ˈdɪzi/",
+     "example": "I am dizzy.",
+     "tip": "dizzy 听起来像“弟子”，想象弟子转圈后头晕。"
+    },
+    {
+     "en": "picture",
+     "zh": "图画，绘画；照片",
+     "core": true,
+     "phonetic": "/ˈpɪktʃə/",
+     "example": "This is my picture.",
+     "tip": "picture 可以表示“图画”或“照片”。"
+    },
+    {
+     "en": "er",
+     "zh": "哦，嗯",
+     "core": false,
+     "phonetic": "/ɜː/",
+     "example": "Er, I can sing.",
+     "tip": "想一想时可以说 er。"
+    },
+    {
+     "en": "fox",
+     "zh": "狐狸",
+     "core": false,
+     "phonetic": "/fɒks/",
+     "example": "This is a fox.",
+     "tip": "fox 的开头音像“福”，狐狸很聪明。"
+    },
+    {
+     "en": "child (pl. children)",
+     "zh": "儿童，小孩",
+     "core": true,
+     "phonetic": "/tʃaɪld/",
+     "example": "This is a child.",
+     "tip": "child 是“小孩”，复数是 children。"
+    },
+    {
+     "en": "thing",
+     "zh": "事情",
+     "core": false,
+     "phonetic": "/θɪŋ/",
+     "example": "I can do one thing.",
+     "tip": "thing 可以表示“事情”或“东西”。"
     }
    ],
    "sentences": [
     {
-     "en": "These days, I sometimes work from home and have online meetings."
+     "en": "Is this a fox?"
     },
     {
-     "en": "Now I often shop online and pay on my smartphone."
+     "en": "Bobby: I can dance for you, Grandpa."
     },
     {
-     "en": "In the past, I worked in an office."
+     "en": "Grandpa: Are you OK, Bobby?"
     },
     {
-     "en": "Twenty years ago, I went to shops and paid in cash."
+     "en": "Bobby: Oh, I’m dizzy ..."
     },
     {
-     "en": "Liu Jiajia wrote about the changes in her grandmother's life. Complete the passage."
+     "en": "Bobby: Grandpa, I can draw a picture for you."
     },
     {
-     "en": "Fifty years ago, my grandmother _______ (walk) to different places. There _______ (be) no phones. She _______ (write) letters to her friends."
+     "en": "Grandpa: Er, is this a fox?"
     },
     {
-     "en": "Now she _______ (go) to different places by e-bike or metro. She also _______ (use) a smartphone. Sometimes she _______ (write) emails. My grandmother and I often _______ (chat) on the internet. It is great!"
+     "en": "Bobby: No, it’s you!"
     },
     {
-     "en": "1 Two weeks ago, Bobby's parents bought a robot from a shop."
+     "en": "Grandpa: Ha ha!"
     }
    ],
    "passage": {
-    "title": "Our robot friend",
-    "page": 97,
+    "title": "I can sing",
+    "page": 70,
     "lines": [
-     "One day, Bobby, Tina and their parents went to the park.",
-     "They came back late.",
-     "I'm hungry. What's for dinner today?",
-     "Our robot is cooking dinner for us. He'll give us a surprise.",
-     "I can't wait!",
-     "What happened?",
-     "Where's our dinner?",
-     "Where's the robot?",
-     "Look! Here's our robot!",
-     "Oh no! What's wrong with the robot?",
-     "Tip Good or bad? See page 109.",
-     "How did the robot change the life of Bobby's family?",
-     "A Read and order",
-     "Bobby and his family got home. They were hungry.",
-     "Bobby played Chinese chess with the robot.",
-     "Bobby's parents bought a robot.",
-     "The robot cooked a delicious dinner.",
-     "Bobby and Tina found the robot on the floor.",
-     "B Read and answer",
-     "What happened when Bobby and his family were out?",
-     "What may Bobby think of the robot?",
-     "C Think and discuss",
-     "Do you want a robot at home? Why or why not?",
-     "Sounds in focus",
-     "Listen to the sentences from the story and read.",
-     "Two weeks ago, / Bobby's parents / bought a robot / from a shop.",
-     "Our robot / is cooking dinner / for us.",
-     "Listen to the sentences and read along.",
-     "Last week, / I bought a robot / online.",
-     "It does / a lot of chores.",
-     "It never / gets tired.",
-     "I can talk to it / on the screen.",
-     "It makes / my house / clean."
+     "I can sing",
+     "It's New Year's Day. The children want to do things for the family.",
+     "I can sing.",
+     "I can sing too.",
+     "I can take pictures.",
+     "Great!",
+     "I can dance.",
+     "I can dance too.",
+     "How lovely!",
+     "I can draw.",
+     "I can draw too.",
+     "Look! This is my picture.",
+     "We can clean the table.",
+     "We can clean the table too.",
+     "Great! Thank you.",
+     "What can the children do for their family?"
     ]
    },
    "quiz": [
     {
-     "q": "Look! Here's our robot! Oh no! What's ___ with the robot?",
+     "q": "I ___ sing.",
      "options": [
-      "right",
-      "wrong",
-      "good"
+      "table",
+      "can",
+      "draw"
      ],
      "answer": 1,
-     "explain": "根据课文原文 'What's wrong with the robot?'，询问某物出了什么毛病常用句型 'What's wrong with...'。"
+     "explain": "句意是“我会唱歌”，所以选 can。"
     },
     {
-     "q": "In the past, people paid with ___. But these days, we often pay by phone.",
+     "q": "I can ___.",
      "options": [
-      "cash",
-      "email",
-      "robot"
-     ],
-     "answer": 0,
-     "explain": "cash意为“现金”，符合过去人们支付方式的语境，与现在的手机支付形成对比。"
-    },
-    {
-     "q": "Our robot is cooking dinner for us. He'll give us a ___.",
-     "options": [
-      "meeting",
-      "shop",
-      "surprise"
+      "family",
+      "picture",
+      "dance"
      ],
      "answer": 2,
-     "explain": "根据课文原文 'He'll give us a surprise.'，give sb. a surprise 意为“给某人一个惊喜”。"
+     "explain": "dance 是“跳舞”，可以说 I can dance。"
     },
     {
-     "q": "___ did the robot change the life of Bobby's family?",
+     "q": "This is my ___.",
      "options": [
-      "How",
-      "Where",
-      "Who"
+      "sing",
+      "picture",
+      "for"
      ],
-     "answer": 0,
-     "explain": "课文最后的思考题是 'How did the robot change...'，询问方式或程度用疑问词 How。"
+     "answer": 1,
+     "explain": "picture 是“图画”，句意是“这是我的图画”。"
+    },
+    {
+     "q": "We can clean the ___.",
+     "options": [
+      "fox",
+      "can",
+      "table"
+     ],
+     "answer": 2,
+     "explain": "table 是“桌子”，句意是“我们可以打扫桌子”。"
     }
    ]
   }

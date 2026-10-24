@@ -15,6 +15,7 @@
 from __future__ import annotations
 
 import json
+import random
 import os
 import pathlib
 import sys
@@ -95,6 +96,20 @@ def ask(prompt: str) -> dict:
     raise RuntimeError("调用失败：%s: %s" % (type(last).__name__, last))
 
 
+def shuffle_quiz(quiz: list[dict], unit_no: int) -> list[dict]:
+    """打乱每题选项顺序（模型爱把正确答案放第一个，孩子会发现「永远选 A」）。
+
+    用 (unit, 题号) 做种子 —— 确定性洗牌，重跑 enrich 不会变来变去。
+    """
+    for i, q in enumerate(quiz):
+        rng = random.Random("quiz|%d|%d|%s" % (unit_no, i, q["q"]))
+        opts = list(q["options"])
+        rng.shuffle(opts)
+        q["answer"] = opts.index(q["options"][q["answer"]])
+        q["options"] = opts
+    return quiz
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print(__doc__)
@@ -149,7 +164,7 @@ def main() -> int:
             quiz.append({"q": str(q["q"]), "options": opts,
                          "answer": max(0, min(ans, len(opts) - 1)),
                          "explain": str(q.get("explain", ""))})
-        u["quiz"] = quiz
+        u["quiz"] = shuffle_quiz(quiz, no)
         u["status"] = "ready" if quiz and words else "partial"
         print("Unit %d %-22s 音标 %d/%d 题 %d 补中文 %d"
               % (no, u.get("title", ""),

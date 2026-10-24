@@ -189,38 +189,67 @@ def _clean_line(line: str) -> str:
 
 
 def passage(pages: list[dict], start: int, end: int, unit_title: str = "") -> dict:
-    """取该单元「真正的 Story time 课文」+ 它的下一页。
+    """取该单元「Story time 课文页段」的连续页。
 
-    ⚠️ 不能简单取「第一个有标题的 Story time 页」：教材把跨两页的课文里，
-       前一半那页的标题常常就是 `Unit 6` 这种页眉（模型照抄成 title），
-       真正的课文标题在下一页（`Take care of the Earth`）。所以：
-         · 标题形如 `Unit N...` 的一律不算「真标题」；
-         · 候选里按「本页 + 下一页」的总行数取最大，避免挑到只有两行的残页；
-         · 下一页**不限制板块** —— 课文常常溢到下一页而那一页被标成 Cartoon/Other。
-    ⚠️ 三年级（2024 新版）的 Story time 是漫画格，**没有独立课文标题** ——
-       所以不再强制「有真标题才入选」：无标题的 Story time 页同样作候选，
-       课文标题缺位时用单元名（unit_title）补。
+    ⚠️ 六年级：课文标题可能写在前一页页眉（`Unit N`），真标题在下一页，
+       且课文常溢到被标成 Cartoon/Other 的页 —— 所以那套取「有标题页 + 下一页」。
+    ⚠️ 三年级（2024 新版）不同：Story time 是**无标题漫画格，固定跨 2 页**，
+       两页 section 都标 Story time；再往后就是 Fun time 练习页（会被六年级的
+       「下一页不限制板块」规则混进噪音行，如 "A Look and match"、"1"、"2"）。
+    所以改成：在单元区间里找**连续的 Story time 页段**，取总行数最大的一段，
+    行 = 各页 text 依序拼接；课文标题缺位时用单元名（unit_title）补。
     """
     by_page = {j["page"]: j for j in pages if start <= j["page"] <= end}
 
-    def real_title(t: str) -> bool:
-        t = (t or "").strip()
-        return bool(t) and not re.match(r"^Unit\s*\d+\b", t, re.I) and t.lower() != "cartoon time"
+    def lines_of(j: dict | None) -> list[str]:
+        return [_clean_line(ln) for ln in ((j or {}).get("text") or []) if ln.strip()]
+
+    def is_noise(ln: str) -> bool:
+        # 纯数字（练习题序号）/ 单个大写字母（活动序号）/ 板块名行
+        if re.match(r"^\d{1,2}$", ln) or re.match(r"^[A-D]$", ln):
+            return True
+        return ln.lower() in ("story time", "cartoon time")
+
+    # 活动页标题（Read and answer / Look and match ...）。OCR 会把这类练习页
+    # 误标成 Story time（U7 实测踩到：p61 练习页标成 Story time，把真课文
+    # 「Thanks, Dad!」的连续段切断了）。带活动标题的段一律降权。
+    ACTIVITY_TITLE_RE = re.compile(
+        r"(?i)^(read and|look and|listen and|circle|match|trace|think|act it|"
+        r"find|write|sing|chant|survey|play a game)")
 
     best = None
+    run: list[tuple[int, list[str]]] = []   # [(page, [lines]), ...]
+
+    def consider() -> None:
+        nonlocal best
+        if not run:
+            return
+        # 修剪段头连着的「活动页」（Read and answer ...）：U7 实测 p61 练习页
+        # 被 OCR 误标成 Story time，且其标题恰在段头 —— 不剪会顶着活动标题
+        # 吃掉后面整段真课文（Thanks, Dad!）
+        pages = list(run)
+        while len(pages) > 1 and ACTIVITY_TITLE_RE.match(
+                (by_page[pages[0][0]].get("title") or "").strip()):
+            pages = pages[1:]
+        title = (by_page[pages[0][0]].get("title") or "").strip()
+        if (not title or re.match(r"^Unit\s*\d+\b", title, re.I)
+                or title.lower() == "cartoon time"):
+            title = unit_title
+        lines = [ln for _, ls in pages for ln in ls]
+        score = len(lines)
+        if ACTIVITY_TITLE_RE.match(title):
+            score -= 1000          # 剪完还是活动标题：仅在没有像样的课文段时兜底
+        if best is None or score > best[0]:
+            best = (score, pages[0][0], title, lines)
+
     for p in sorted(by_page):
         j = by_page[p]
-        if j.get("section") != "Story time":
-            continue
-        lines = [_clean_line(ln) for ln in (j.get("text") or []) if ln.strip()]
-        nxt = by_page.get(p + 1)
-        extra = [_clean_line(ln) for ln in ((nxt or {}).get("text") or []) if ln.strip()]
-        score = len(lines) + len(extra)
-        title = (j.get("title") or "").strip()
-        if not real_title(title):
-            title = unit_title
-        if best is None or score > best[0]:
-            best = (score, p, title, lines + extra)
+        if j.get("section") == "Story time":
+            run.append((p, [ln for ln in lines_of(j) if not is_noise(ln)]))
+        else:
+            consider()
+            run = []
+    consider()  # 课文正好收在单元末页
     if not best:
         return {"title": "", "page": None, "lines": []}
     return {"title": best[2], "page": best[1], "lines": best[3]}
