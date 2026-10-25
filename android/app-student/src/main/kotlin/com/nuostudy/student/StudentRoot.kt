@@ -81,12 +81,13 @@ fun StudentRoot(modifier: Modifier = Modifier) {
     // 由作答态把它置 false 来锁住外层滑动。骨架阶段先恒为可滑动。
     val swipeEnabled = true
 
-    // 家长侧的两个开关：
-    //   gateOpen     —— 口令对话框要不要弹
-    //   settingsOpen —— 正文区显示设置页还是 pager
+    // 家长侧开关：正文区显示设置页还是 pager。
     // 用 rememberSaveable 而不是 remember：进程被系统回收后再回来，
     // 家长不该发现自己「刚打开的设置页自己关了」。
-    var gateOpen by rememberSaveable { mutableStateOf(false) }
+    //
+    // ⚠️ 原来的 AdminGate 家长口令被移除（2026-10-25）：口令常量只有原作者
+    //    知道，我们拿不到也无法重设，齿轮点了永远进不去。这台是家庭专用机，
+    //    直接放行设置页；将来要恢复口令，把 AdminPasswordDialog 的门闩加回来即可。
     var settingsOpen by rememberSaveable { mutableStateOf(false) }
 
     /* 顶栏是否收起。rememberSaveable：转屏、进程被回收再回来都保持家长/孩子选择的形态。 */
@@ -124,7 +125,7 @@ fun StudentRoot(modifier: Modifier = Modifier) {
                     accents = accent,
                     selected = pager.currentPage,
                     onSelect = { scope.launch { pager.animateScrollToPage(it) } },
-                    onOpenSettings = { gateOpen = true },
+                    onOpenSettings = { settingsOpen = true },
                     // 收起：把整条顶栏让给内容（孩子做题时最需要纵向空间）
                     onCollapse = { tabBarVisible = false },
                     // 开着设置页时把页签整行禁掉：此时 Pager 不在组合里，
@@ -182,19 +183,6 @@ fun StudentRoot(modifier: Modifier = Modifier) {
                     }
                 }
         }
-        }
-
-        // 口令门闩。放 Box 内、Scaffold 外：它是覆盖在全部内容之上的模态，
-        // 不该参与 Scaffold 的布局测量。（AdminPasswordDialog 本身是 Dialog，
-        // 独立窗口，与 AssistantOverlay 互不遮挡。）
-        if (gateOpen) {
-            AdminPasswordDialog(
-                onDismiss = { gateOpen = false },
-                onSuccess = {
-                    gateOpen = false
-                    settingsOpen = true
-                },
-            )
         }
 
         // 悬浮小智助手（右下角小姐姐 + 语音对话）：写在最后 = 组合树最高层。
