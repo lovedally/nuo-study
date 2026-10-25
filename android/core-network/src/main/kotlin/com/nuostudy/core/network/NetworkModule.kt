@@ -28,7 +28,7 @@ private const val PLACEHOLDER_BASE_URL = "http://localhost/"
 internal class DynamicUrlInterceptor(private val endpoint: ServerEndpoint) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val base = endpoint.baseUrl()?.toHttpUrlOrNull()
-            ?: throw ApiException(0, "尚未配置服务端地址，请在「设置」里填写")
+            ?: return chain.request().notConfigured()
         val original = chain.request()
 
         // 替换 scheme/host/port，**并且把用户在「设置」里填的路径前缀补回去**。
@@ -68,6 +68,27 @@ internal class DynamicUrlInterceptor(private val endpoint: ServerEndpoint) : Int
 
         return chain.proceed(builder.build())
     }
+
+    /**
+     * 未配置服务端地址时的**失败软着陆**：返回一个合成的 599 响应，
+     * 而不是抛异常。
+     *
+     * ⚠️ 这里曾经 `throw ApiException(...)` —— 在 OkHttp Dispatcher（enqueue）
+     *    线程上，RuntimeException 会被包成 `Error` 直达未捕获处理器，
+     *    **首装未配置时 App 一启动就崩**，设置页都进不去（实测 2026-10-25）。
+     *    599 走的是正常响应通道：enqueue → onResponse(!isSuccessful)、
+     *    suspend → HttpException、SSE → IOException("SSE HTTP 599")，
+     *    每条路径都有各自的软处理，App 活着等家长去设置页填配置。
+     *    599 是非标准码，语义 = "服务端地址未配置"。
+     */
+    private fun okhttp3.Request.notConfigured(): okhttp3.Response =
+        okhttp3.Response.Builder()
+            .request(this)
+            .protocol(okhttp3.Protocol.HTTP_1_1)
+            .code(599)
+            .message("server not configured")
+            .body(okhttp3.ResponseBody.create(null, ""))
+            .build()
 }
 
 @Module
