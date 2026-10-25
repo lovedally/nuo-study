@@ -93,9 +93,13 @@ class LiveSync @Inject constructor(
     private fun eventLoop(gen: Int) {
         var backoffMs = INITIAL_BACKOFF_MS
         while (alive(gen)) {
-            val c = buildCall()
-            call = c
             try {
+                // buildCall 必须在 try 里：服务端地址未配置时它会抛
+                // IOException（首装尚未在设置页填地址/令牌就是这种状态）。
+                // 放在 try 外会让这条线程以未捕获异常直接杀掉整个进程 ——
+                // 表现为「装完 App 一打开就闪退」，连设置页都进不去。
+                val c = buildCall()
+                call = c
                 c.execute().use { resp ->
                     if (!resp.isSuccessful) throw IOException("SSE HTTP ${resp.code}")
                     backoffMs = INITIAL_BACKOFF_MS   // 每次连上就把退避重置回 1s
