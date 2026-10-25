@@ -292,9 +292,10 @@ class EnglishViewModel @Inject constructor(
         // 只有**确认过**没配才拦。health 还没回来时直接把请求发出去，
         // 让服务端说真话 —— 总比「明明配了却说没配」好。
         if (healthLoaded && !services.azureTts) {
-            // 不去发那个注定失败的请求：报错会是一句「尚未配置 AZURE_SPEECH_KEY」，
-            // 对家长来说不如直接说该去做什么。
-            notice = "服务端还没配 Azure 语音密钥，先在 NAS 的 .env 里补 AZURE_SPEECH_KEY"
+            // 不去发那个注定失败的请求：报错会是一句「尚未配置 XFYUN_APPID /
+            // XFYUN_APIPASSWORD」，对家长来说不如直接说该去做什么。
+            // （services key 名沿用 azureTts 是历史契约，背后已是讯飞合成。）
+            notice = "服务端还没配置讯飞语音合成，先在 .env 里补 XFYUN_APPID / XFYUN_APIPASSWORD"
             return
         }
         viewModelScope.launch {
@@ -625,7 +626,7 @@ class EnglishViewModel @Inject constructor(
     /**
      * 把网络异常翻译成家长看得懂的一句话。
      *
-     * 服务端的错误体是 `{"error": "腾讯智聆需要配置 TENCENT_APP_ID…"}` ——
+     * 服务端的错误体是 `{"error": "讯飞评测需要配置 XFYUN_APPID…"}` ——
      * 这句本来就能直接给人看，比 `HTTP 502` 有用得多。
      */
     private fun friendly(t: Throwable): String = when (t) {

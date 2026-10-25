@@ -67,7 +67,7 @@ interface EnglishApi {
     suspend fun curriculum(): CurriculumDto
 
     /**
-     * 跟读评测（腾讯智聆）。
+     * 跟读评测（讯飞语音评测，返回形状沿用腾讯智聆契约）。
      *
      * [EvaluateRequest.audio] 是 **data URI**（`data:audio/wav;base64,…`），
      * 服务端会自己用 ffmpeg 转成 16k 单声道 PCM 再送智聆 —— 客户端只要能给出
@@ -213,7 +213,8 @@ data class CurriculumQuizDto(
 
 // ---------------------------------------------------------------- 录音相关
 //
-// 这三个接口的字段名是**腾讯智聆 / 服务端的原始 JSON**，照抄不改名（用 @SerialName）。
+// 这三个接口的字段名是**服务端的原始 JSON**，照抄不改名（用 @SerialName）。
+// 改成驼峰反而要在中间加一层映射，而这一层以后一定会有人忘了映射新字段。
 // 改成驼峰反而要在中间加一层映射，而这一层以后一定会有人忘了映射新字段。
 
 @Serializable
@@ -227,7 +228,7 @@ data class EvaluateRequest(
 data class EvaluateResponse(val result: SoeResult = SoeResult())
 
 /**
- * 腾讯智聆的评测结果。
+ * 评测结果（后端引擎是讯飞语音评测，但返回形状保持腾讯智聆的契约不变）。
  *
  * ⚠️ **单位不统一，展示前必须换**（这是最容易出错的地方）：
  *   · [SuggestedScore] / [PronAccuracy] —— 0~100

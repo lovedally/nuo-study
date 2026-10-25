@@ -26,10 +26,10 @@
 
   1. **千问 `max_tokens=180`**：三年级口语陪练只回一两句；给多了它会开始整段讲课文，
      孩子还没听懂上一句，屏幕已经滚过去三行。
-  2. **腾讯智聆签名要对「原始值」排序后 HMAC-SHA1**，签完再做 URL 编码。
-     先编码再签名 100% 报签名错误，且报错信息不会告诉你是这里错了。
+  2. **讯飞评测的文本帧必须带 UTF-8 BOM**（`\uFEFF`），英文单词题型还要用
+     `[word]` 前缀包住 —— 少一个服务端就不认，且报错不指明是这里错了。
   3. **评测音频必须是 16k 单声道 s16le PCM**；浏览器给的是 webm/opus，
-     必须过一次 ffmpeg。少了这步智聆会返回一个「识别为空」的成功响应。
+     必须过一次 ffmpeg。少了这步评测会返回一个「识别为空」的成功响应。
   4. **TTS 结果按 `sha256(voice|text)` 落盘缓存**：一节课会重复点同一句话几十次，
      不缓存既费钱又慢（首次 300–800ms，命中不到 5ms）。
 """
@@ -56,15 +56,6 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 
 from . import config
-
-# 微软语音的输出格式。
-#
-# ⚠️ 96kbps → 48kbps（2026-10-23）：24kHz 采样的**语音**，48kbps 已经听不出差别，
-#    而文件体积直接减半（一句课文 90KB → 45KB）。局域网带宽不是瓶颈，
-#    但 MediaPlayer 需要先缓冲一段才能起播，文件小一半等于起播快一截。
-# ⚠️ 改这一行会让**所有缓存失效**（缓存键里有它），必须重跑 tools/warm_tts.py，
-#    否则全部退回 4 秒的冷合成。
-AUDIO_FORMAT = "audio-24khz-48kbitrate-mono-mp3"
 
 # ---------------------------------------------------------------- 错误
 class EnglishError(Exception):
@@ -147,64 +138,98 @@ def _audio_ext(mime: str) -> str:
     return "mp3"
 
 
-def _xml_escape(value: str) -> str:
-    return (str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            .replace("'", "&apos;").replace('"', "&quot;"))
+# ---------------------------------------------------------------- 1. 语音合成（讯飞在线合成）
+# 讯飞的输出格式：lame = mp3，sfl=1 开流式分片（官方要求二者必须同时给）。
+# ⚠️ 改这一行会让**所有缓存失效**（缓存键里有它），必须重跑 tools/warm_tts.py。
+TTS_BACKEND = "xfyun-lame-16k"
+
+# 讯飞 TTS 通道只支持 WebSocket（wss://tts-api.xfyun.cn/v2/tts），
+# 没有 HTTP 端点 —— 别像原来的 Azure 版那样去找 REST 接口。
+TTS_WS_URL = "wss://tts-api.xfyun.cn/v2/tts"
 
 
-# ---------------------------------------------------------------- 1. 语音合成
-def azure_tts(text: str, voice: str | None = None, rate: str | None = None,
-              pitch: str | None = None) -> str:
+def xfyun_tts(text: str, voice: str | None = None, speed: str | None = None) -> str:
     """文本 → `/generated-tts/<sha256>.mp3`（磁盘缓存，同一句只合成一次）。
 
-    voice / rate / pitch 三个参数平时都用 config 里的值，只有
-    tools/voice_samples.py 试听对比时会传不同组合（所以缓存键里必须带上它们，
-    否则改了音色还会命中旧音频 —— 试听页会出现「六个选项听起来一样」）。
+    讯飞在线合成 WebSocket 协议（与国美云 xiaokouyu 的 gen_tts_cache.py 同一条链路，
+    2026-10-16 Python 直连真云验证通过）：
+
+      握手头带 `x-api-key: <APIPassword>`（TTS 独有的鉴权方式）；
+      一帧发完整个请求（data.status 必须为 2 —— 该接口**不支持分段发文本**）；
+      收 `data.audio` 分片，base64 解码后按序 append（流式 mp3 分片拼接合法）；
+      `data.status=2` 表示合成结束。
+
+    voice / speed 平时用 config 里的值，tools/voice_samples.py 试听对比时会传
+    不同组合（所以缓存键里必须带上它们，否则改了音色还会命中旧音频）。
     """
     text = (text or "").strip()
     if not text or len(text) > 800:
         raise EnglishError("文本长度需为1至800字符")
-    key = config.AZURE_SPEECH_KEY
-    if not key:
-        raise EnglishError("尚未配置 AZURE_SPEECH_KEY")
+    appid = config.XFYUN_APPID
+    password = config.XFYUN_APIPASSWORD
+    if not (appid and password):
+        raise EnglishError("尚未配置 XFYUN_APPID / XFYUN_APIPASSWORD（讯飞语音合成）")
 
-    voice = voice or config.AZURE_TTS_VOICE
-    rate = rate if rate is not None else config.AZURE_TTS_RATE
-    pitch = pitch if pitch is not None else config.AZURE_TTS_PITCH
-    region = config.AZURE_SPEECH_REGION or "eastasia"
-    # ⚠️ 缓存键必须把**所有影响音频内容的参数**都算进去，包括输出格式。
-    #    少一个就会出现「改了参数但听起来没变」，而且因为命中缓存连日志都没有，
-    #    极难往「缓存没失效」上想。（voice/rate/pitch 已经踩过一次，格式加进来同理。）
+    voice = voice or config.XFYUN_TTS_VOICE
+    speed = str(speed if speed is not None else config.XFYUN_TTS_SPEED)
+    # ⚠️ 缓存键必须把**所有影响音频内容的参数**都算进去，包括后端标识。
+    #    少一个就会出现「改了参数但听起来没变」，而且因为命中缓存连日志都没有。
     cache_key = hashlib.sha256(
-        ("%s|%s|%s|%s|%s" % (voice, rate, pitch, AUDIO_FORMAT, text)).encode("utf-8")).hexdigest()
+        ("%s|%s|%s|%s" % (voice, speed, TTS_BACKEND, text)).encode("utf-8")).hexdigest()
     target = config.TTS_DIR / (cache_key + ".mp3")
     if target.exists() and target.stat().st_size > 0:
         return "/generated-tts/" + target.name
 
+    try:
+        from websockets.sync.client import connect
+    except ImportError:
+        # 刻意不在模块顶层 import：没装 websockets 时其余能力照常可用。
+        raise EnglishError(
+            "服务端缺少 websockets 库，语音合成不可用。请执行 "
+            "`pip install -r requirements.txt`。", 500)
+
     config.TTS_DIR.mkdir(parents=True, exist_ok=True)
-    # prosody 只在真的设了值时才写：空串会让 SSML 变成 rate=""，微软会直接拒。
-    inner = _xml_escape(text)
-    attrs = (" rate=\"%s\"" % _xml_escape(rate) if rate else "") + \
-            (" pitch=\"%s\"" % _xml_escape(pitch) if pitch else "")
-    body = ('<prosody%s>%s</prosody>' % (attrs, inner)) if attrs else inner
-    ssml = ('<speak version="1.0" xml:lang="en-GB"><voice name="%s">%s</voice></speak>'
-            % (_xml_escape(voice), body))
-    req = urllib.request.Request(
-        "https://%s.tts.speech.microsoft.com/cognitiveservices/v1" % region,
-        data=ssml.encode("utf-8"),
-        headers={
-            "Ocp-Apim-Subscription-Key": key,
-            "Content-Type": "application/ssml+xml",
-            "X-Microsoft-OutputFormat": AUDIO_FORMAT,
-            "User-Agent": "NuonuoEnglish/1.0",
+    req = {
+        "common": {"app_id": appid},
+        "business": {
+            "aue": "lame", "sfl": 1, "vcn": voice,
+            "auf": "audio/L16;rate=16000",
+            "speed": int(speed) if speed.lstrip("-").isdigit() else 50,
+            "volume": 50, "pitch": 50,
         },
-        method="POST")
-    audio = _open(req, timeout=60)
+        # status 固定 2：一次性传完整文本，讯飞不允许分段发
+        "data": {"status": 2,
+                 "text": base64.b64encode(text.encode("utf-8")).decode("ascii")},
+    }
+    audio = bytearray()
+    try:
+        with connect(TTS_WS_URL, additional_headers={"x-api-key": password},
+                     open_timeout=10, close_timeout=3) as ws:
+            ws.send(json.dumps(req))
+            deadline = time.time() + 60
+            while time.time() < deadline:
+                msg = json.loads(ws.recv(timeout=max(0.5, deadline - time.time())))
+                code = msg.get("code", -1)
+                if code != 0:
+                    # 11200 = 发音人未授权（licc failed）；10105/10110 = 鉴权/额度
+                    raise EnglishError("讯飞合成错误 %s：%s"
+                                       % (code, msg.get("message", "")), 502)
+                d = msg.get("data") or {}
+                if d.get("audio"):
+                    audio += base64.b64decode(d["audio"])
+                if d.get("status") == 2:
+                    break
+    except EnglishError:
+        raise
+    except Exception as e:
+        raise EnglishError("连接讯飞合成服务失败（%s: %s）" % (type(e).__name__, e), 502)
+    if len(audio) < 200:
+        raise EnglishError("讯飞合成的音频异常（%d 字节）" % len(audio), 502)
 
     # 先写 .part 再 rename：合成到一半进程被杀，不会留下一个 0 字节的 mp3
     # 被后续请求当成「已缓存」而永远播不出声。
     part = target.with_suffix(".mp3.part")
-    part.write_bytes(audio)
+    part.write_bytes(bytes(audio))
     part.replace(target)
     return "/generated-tts/" + target.name
 
@@ -512,17 +537,17 @@ def qwen_chat(messages: list[dict]) -> tuple[str, str]:
 
     # TTS 失败**不让整个对话失败**：孩子能看到英文回复比「什么都弹不出来」有意义得多。
     try:
-        audio_url = azure_tts(text)
+        audio_url = xfyun_tts(text)
     except EnglishError:
         audio_url = ""
     return text, audio_url
 
 
-# ---------------------------------------------------------------- 4. 跟读评测（腾讯智聆）
+# ---------------------------------------------------------------- 4. 跟读评测（讯飞语音评测 ISE）
 def _ffmpeg(audio_uri: str, ext: str, args: list[str], out_ext: str) -> bytes:
     """浏览器录音 → 任意 ffmpeg 目标格式（PCM / wav 都用它）。
 
-    统一到一个函数是因为这两个用途（智聆要 s16le PCM、千问 ASR 要 wav）本来就要
+    统一到一个函数是因为这两个用途（评测要 s16le PCM、千问 ASR 要 wav）本来就要
     同一套「临时文件 + 超时 + 清理」。分成两份迟早有一份忘了 unlink 而把 data/tmp 撑爆。
     """
     _, blob = _decode_audio(audio_uri)
@@ -552,55 +577,189 @@ def _ffmpeg(audio_uri: str, ext: str, args: list[str], out_ext: str) -> bytes:
 
 
 def _to_pcm(audio_uri: str) -> bytes:
-    """任意浏览器录音 → 16k / 单声道 / s16le PCM（腾讯智聆要的就是这个）。"""
+    """任意浏览器录音 → 16k / 单声道 / s16le PCM（讯飞评测要的就是这个）。"""
     return _ffmpeg(audio_uri, ext=_audio_ext(_decode_audio(audio_uri)[0]),
                    args=["-ac", "1", "-ar", "16000", "-f", "s16le"], out_ext="pcm")
 
 
-def tencent_url(ref_text: str, voice_id: str) -> str:
-    appid = config.TENCENT_APP_ID
-    secret_id = config.TENCENT_SECRET_ID
-    secret_key = config.TENCENT_SECRET_KEY
-    if not (appid and secret_id and secret_key):
-        raise EnglishError("腾讯智聆需要配置 TENCENT_APP_ID、TENCENT_SECRET_ID 和 "
-                           "TENCENT_SECRET_KEY")
-    timestamp = int(time.time())
-    params = {
-        "eval_mode": 1,
-        "expired": timestamp + 3600,
-        "nonce": uuid.uuid4().int % 10 ** 9,
-        "rec_mode": 1,
-        "ref_text": ref_text,
-        "score_coeff": 1.0,
-        "secretid": secret_id,
-        "sentence_info_enabled": 1,
-        "server_engine_type": "16k_en",
-        "text_mode": 0,
-        "timestamp": timestamp,
-        "voice_format": 0,
-        "voice_id": voice_id,
-    }
-    # ⚠️ 签名用**原始值**（不编码）拼 query；编码只用在最后拼 URL 那一步。
-    keys = sorted(params)
-    raw = "soe.cloud.tencent.com/soe/api/%s?%s" % (
-        appid, "&".join("%s=%s" % (k, params[k]) for k in keys))
+# 讯飞评测流式版：与听写/TTS 不同，**只支持签名鉴权**（不支持 x-api-key 头）。
+# 签名算法 2026-10-16 在国美云 xiaokouyu 项目 Python 直连真云验证通过，勿改结构。
+ISE_HOST = "ise-api.xfyun.cn"
+ISE_PATH = "/v2/open-ise"
+# 40ms / 1280 字节 —— 讯飞全系统一的流式分片规格（ASR/ISE/TTS 皆如此）。
+ISE_FRAME_BYTES = 1280
+
+
+def _xfyun_signed_url(host: str, path: str) -> str:
+    """HMAC-SHA256 签名 WebSocket URL。
+
+    ⚠️ 两个极易踩的坑（都实测踩过）：
+      · date 必须 RFC1123 GMT、英文星期/月份 —— 本地化 locale 会直接 403；
+      · authorization **原文外面还要再 base64 一层**才进 query。
+    """
+    from email.utils import formatdate
+    date = formatdate(timeval=None, usegmt=True)
+    origin = "host: %s\ndate: %s\nGET %s HTTP/1.1" % (host, date, path)
     signature = base64.b64encode(
-        hmac.new(secret_key.encode("utf-8"), raw.encode("utf-8"),
-                 hashlib.sha1).digest()).decode("ascii")
-    query = "&".join("%s=%s" % (urllib.parse.quote(str(k), safe=""),
-                                urllib.parse.quote(str(params[k]), safe=""))
-                     for k in keys)
-    return ("wss://soe.cloud.tencent.com/soe/api/%s?%s&signature=%s"
-            % (appid, query, urllib.parse.quote(signature, safe="")))
+        hmac.new(config.XFYUN_APISECRET.encode("utf-8"), origin.encode("utf-8"),
+                 hashlib.sha256).digest()).decode("ascii")
+    authorization = base64.b64encode(
+        ('api_key="%s", algorithm="hmac-sha256", headers="host date request-line", '
+         'signature="%s"' % (config.XFYUN_APIKEY, signature)).encode("utf-8")
+    ).decode("ascii")
+    query = urllib.parse.urlencode(
+        {"authorization": authorization, "date": date, "host": host},
+        quote_via=urllib.parse.quote)
+    return "wss://%s%s?%s" % (host, path, query)
 
 
-def tencent_evaluate(ref_text: str, audio_uri: str) -> dict:
+# 讯飞评测原生分数是 **5 分制**（实测干净合成音 "book" 拿 4.74），
+# 而前端两端的契约是腾讯智聆的形状：SuggestedScore/PronAccuracy 是 0~100、
+# Fluency/Completion 是 0~1。所以这里统一做 /5 归一，前端一行都不用动。
+ISE_MAX_SCORE = 5.0
+
+# 逐词判定阈值（0~100）：≥70 绿（读对）、<70 红（读错）、参考文本里有而音频里
+# 没对上的词标「漏读」。先给个起步值，跟 xiaokouyu 一样等真机数据再校准。
+WORD_PASS = 70.0
+
+
+def _ise_business_params(category: str, ref_text: str) -> dict:
+    """评测参数帧的 business 块。与 xiaokouyu FrameBuilder.iseParameter 逐字段对齐。"""
+    # 单词题型包 [word]、句子题型包 [content]，且 text 必须以 UTF-8 BOM 开头。
+    node = "[word]" if category == "read_word" else "[content]"
+    return {
+        "cmd": "ssb",           # 漏了报 30002 Param [cmd] needed
+        "sub": "ise",
+        "ent": "en_vip",        # 英文评测（see/see_ch 是别的产品线，别用）
+        "category": category,
+        "text": "\uFEFF" + node + ref_text,
+        "tte": "utf-8",
+        "aue": "raw",
+        "auf": "audio/L16;rate=16000",
+        "rst": "entirety",
+        "plev": "0",
+        "ttp_skip": True,
+    }
+
+
+def _ise_norm(score: float, percent: bool = False) -> float:
+    """5 分制 → 目标刻度。percent=False 归一到 0~1，True 归一到 0~100。"""
+    v = max(0.0, min(float(score or 0.0), ISE_MAX_SCORE)) / ISE_MAX_SCORE
+    return v * 100.0 if percent else v
+
+
+def _ise_exception_message(code: int) -> str:
+    """评测异常码 → 孩子能听懂的一句话（来自讯飞官方文档与实测）。"""
+    return {
+        28673: "没有听到声音，靠近一点大声读一遍",
+        28676: "读的内容不对哦，看着屏幕再读一遍",
+        28680: "周围太吵啦，找个安静的地方再试试",
+        28690: "声音太大爆音了，稍微小声一点",
+        28689: "没有录到声音，再试一次",
+    }.get(code, "评测服务返回异常（%s），请再试一次" % code)
+
+
+def _ise_parse_xml(xml: str, ref_words: list[str]) -> dict:
+    """解析评测 XML → 腾讯智聆形状的结果。
+
+    讯飞返回的是 base64 过的 **XML**（不是 JSON）。层级：
+    read_word/read_sentence → sentence → word → syll → phone。
+    每层都带 score 属性；word 节点的 content 对应参考文本的词。
+    """
+    import xml.etree.ElementTree as ET
+
+    root = ET.fromstring(xml)
+    paper = next((el for el in root.iter()
+                  if el.tag in ("read_word", "read_sentence")), None)
+
+    def attr(el, name: str) -> float:
+        try:
+            return float(el.get(name) or 0)
+        except ValueError:
+            return 0.0
+
+    if paper is None:
+        raise EnglishError("讯飞评测返回了无法解析的结果", 502)
+
+    is_rejected = paper.get("is_rejected") == "true"
+    except_info = int(attr(paper, "except_info"))
+    if is_rejected or except_info:
+        raise EnglishError(_ise_exception_message(except_info or 28676))
+
+    # 句子层补 fluency / integrity（read_word 题型时 fluency 挂在 sentence 上）
+    fluency = integrity = 0.0
+    for el in root.iter("sentence"):
+        if attr(el, "fluency_score") > 0:
+            fluency = attr(el, "fluency_score")
+        if attr(el, "integrity_score") > 0:
+            integrity = attr(el, "integrity_score")
+
+    # 逐词：按出现顺序与参考文本对齐（评测是按参考文本对音频做强制对齐的，
+    # 顺序天然一致）。⚠️ XML 里的 "sil" 是静音占位节点，不滤掉会把后面的词
+    # 整体错位一位（"is" 对到 "my" 上），首跑 2026-10-25 已实锤。
+    xml_words = [(el.get("content") or "", attr(el, "total_score"))
+                 for el in root.iter("word") if el.get("content")]
+    xml_words = [(c.strip(".,!?;:'\"").lower(), s) for c, s in xml_words
+                 if c.strip(".,!?;:'\"").lower() not in ("sil", "fil", "")]
+    words_out: list[dict] = []
+    for i, ref in enumerate(ref_words):
+        if i < len(xml_words):
+            content, score5 = xml_words[i]
+            score = _ise_norm(score5, percent=True)
+            words_out.append({
+                "Word": ref,
+                "MatchTag": 0 if score >= WORD_PASS else 2,
+                "PronAccuracy": round(score, 1),
+                "ReferenceWord": content,
+            })
+        else:
+            # 漏读：PronAccuracy 必须是 -1 而不是 0（前端靠 -1 显示「漏读」）
+            words_out.append({"Word": ref, "MatchTag": 1, "PronAccuracy": -1,
+                              "ReferenceWord": ""})
+
+    # 纸级 total/accuracy 实测常为 0（分数挂在 word 节点上，与 xiaokouyu 真机
+    # 观察一致）—— 用逐词均分兜底。漏读的词按 0 分计入。
+    word_scores = [w["PronAccuracy"] for w in words_out if w["PronAccuracy"] >= 0]
+    mean_word = (sum(word_scores) / len(word_scores)) if word_scores else 0.0
+    matched = sum(1 for w in words_out if w["MatchTag"] != 1)
+    total = attr(paper, "total_score") or (mean_word / 100.0 * ISE_MAX_SCORE)
+    accuracy = attr(paper, "accuracy_score") or total
+    # integrity 实测在单词/部分句子题型上为 0 —— 用「读出来的词占比」兜底。
+    completeness = integrity if integrity > 0 else (
+        100.0 * matched / len(ref_words) if ref_words else 0.0)
+    # 单词题型没有 sentence 节点，fluency 实测恒为 0 —— 不兜底的话孩子会看到
+    # 「流利 0 分」（安卓端把 0~1 乘 100 展示）。读出来的占比就是最朴素的流利度。
+    if fluency <= 0 and ref_words:
+        fluency = ISE_MAX_SCORE * matched / len(ref_words)
+    return {
+        "SuggestedScore": round(_ise_norm(total, percent=True), 1),
+        "PronAccuracy": round(_ise_norm(accuracy, percent=True), 1),
+        "PronFluency": round(_ise_norm(fluency), 2),
+        "PronCompletion": round(min(completeness, 100.0) / 100.0, 2),
+        "Words": words_out,
+    }
+
+
+def xfyun_evaluate(ref_text: str, audio_uri: str) -> dict:
+    """跟读打分：录音 + 参考文本 → 腾讯智聆兼容形状的评分结果。
+
+    协议（全部实测验证过，见 docs/PROTOCOL.md of xiaokouyu）：
+
+      ① 参数帧 cmd="ssb"（必须最先发，text 带 BOM + [word]/[content] 包裹）
+      ② 音频首帧 aus=1 / 中间 aus=2 / 末帧 aus=4（末帧 payload 必须为空串）
+      ③ **末帧之后禁止再发任何帧**，否则服务端回莫名错误或直接丢弃
+      ④ 结果在 data.data = base64(XML)，data.status=2 才是最终结果
+
+    与旧版（腾讯智聆）不同，这里不需要先上传音频到对象存储再给 URI ——
+    讯飞直接在 WebSocket 上收 PCM 分片，链路更短。
+    """
     ref_text = (ref_text or "").strip()
-    if not ref_text or not (1 <= len(ref_text.split()) <= 30):
+    ref_words = re.findall(r"[A-Za-z']+", ref_text)
+    if not ref_words or not (1 <= len(ref_words) <= 30):
         raise EnglishError("跟读文本需为1至30个英文单词")
+    if not (config.XFYUN_APPID and config.XFYUN_APIKEY and config.XFYUN_APISECRET):
+        raise EnglishError("讯飞评测需要配置 XFYUN_APPID、XFYUN_APIKEY 和 XFYUN_APISECRET")
     pcm = _to_pcm(audio_uri)
-    voice_id = str(uuid.uuid4())
-    url = tencent_url(ref_text, voice_id)
 
     try:
         from websockets.sync.client import connect
@@ -610,42 +769,48 @@ def tencent_evaluate(ref_text: str, audio_uri: str) -> dict:
             "服务端缺少 websockets 库，跟读评测不可用。请在 NAS 上执行 "
             "`pip install -r requirements.txt`（或部署时带 --install）。", 500)
 
-    latest: dict | None = None
-    sent = False
+    category = "read_word" if len(ref_words) == 1 else "read_sentence"
+    url = _xfyun_signed_url(ISE_HOST, ISE_PATH)
+    xml_text = ""
     deadline = time.time() + 30
     try:
         with connect(url, open_timeout=10, close_timeout=3) as ws:
-            while True:
-                remaining = deadline - time.time()
-                if remaining <= 0:
-                    raise EnglishError("腾讯智聆评测超时", 504)
-                message = ws.recv(timeout=remaining)
-                try:
-                    msg = json.loads(message)
-                except Exception:
-                    continue
-                if msg.get("code") not in (0, None):
-                    raise EnglishError("腾讯智聆错误 %s: %s"
+            ws.send(json.dumps({
+                "common": {"app_id": config.XFYUN_APPID},
+                "business": _ise_business_params(category, ref_text),
+                "data": {"status": 0},
+            }))
+            # 音频背靠背一次发完再收结果（讯飞实测：发发停停会被断开）。
+            # 单帧 ≤19200B 合法，这里仍按 40ms/1280B 切，只为与官方规格一致。
+            chunks = [pcm[i:i + ISE_FRAME_BYTES]
+                      for i in range(0, len(pcm), ISE_FRAME_BYTES)] or [b""]
+            for n, chunk in enumerate(chunks):
+                last = n == len(chunks) - 1
+                ws.send(json.dumps({
+                    "common": {"app_id": config.XFYUN_APPID},
+                    "business": {"cmd": "auw", "aus": 4 if last else (1 if n == 0 else 2)},
+                    "data": {"status": 2 if last else 1,
+                             "data": "" if last else base64.b64encode(chunk).decode("ascii")},
+                }))
+            while time.time() < deadline:
+                msg = json.loads(ws.recv(timeout=max(0.5, deadline - time.time())))
+                if msg.get("code", 0) != 0:
+                    raise EnglishError("讯飞评测错误 %s：%s"
                                        % (msg.get("code"), msg.get("message")), 502)
-                # 握手成功的标志：message=success 且**没有** message_id
-                # （带 message_id 的是中间分片，提前送音频会被直接丢弃）。
-                if not sent and msg.get("message") == "success" and not msg.get("message_id"):
-                    ws.send(pcm)
-                    ws.send(json.dumps({"type": "end"}))
-                    sent = True
-                if "result" in msg:
-                    result = msg["result"]
-                    try:
-                        latest = json.loads(result) if isinstance(result, str) else result
-                    except Exception:
-                        latest = None
-                if msg.get("final") == 1:
+                d = msg.get("data") or {}
+                payload = d.get("data") or ""
+                if payload:
+                    xml_text = base64.b64decode(payload).decode("utf-8", "replace")
+                if d.get("status") == 2:
                     break
     except EnglishError:
         raise
     except Exception as e:
-        raise EnglishError("无法连接腾讯智聆评测服务（%s: %s）" % (type(e).__name__, e), 502)
-    return latest or {"SuggestedScore": 0, "Words": []}
+        raise EnglishError("无法连接讯飞评测服务（%s: %s）" % (type(e).__name__, e), 502)
+
+    if not xml_text:
+        raise EnglishError("讯飞评测没有返回结果", 502)
+    return _ise_parse_xml(xml_text, ref_words)
 
 
 # ---------------------------------------------------------------- 路由
@@ -686,18 +851,21 @@ def health() -> dict:
         transcribe_engine = "openai:" + config.OPENAI_TRANSCRIBE_MODEL
     else:
         transcribe_engine = ""
+    # ⚠️ 四个 key 的名字（azureTts/tencentSoe）是**前端契约**：网页 app.js 靠
+    # `Object.values(services)` 数够不够 4 个，安卓端靠这两个名字灰置按钮。
+    # 现在背后跑的是讯飞（TTS=合成、tencentSoe=评测），名字留着别改。
     return {
         "ok": True,
         "services": {
-            "azureTts": bool(config.AZURE_SPEECH_KEY),
-            "tencentSoe": bool(config.TENCENT_APP_ID and config.TENCENT_SECRET_ID
-                               and config.TENCENT_SECRET_KEY),
+            "azureTts": bool(config.XFYUN_APPID and config.XFYUN_APIPASSWORD),
+            "tencentSoe": bool(config.XFYUN_APPID and config.XFYUN_APIKEY
+                               and config.XFYUN_APISECRET),
             "qwenChat": bool(config.QWEN_API_KEY),
             # 千问 ASR 与对话共用一把 key，所以这两项通常一起为 true
             "transcription": bool(transcribe_engine),
         },
-        "region": config.AZURE_SPEECH_REGION or "eastasia",
-        "voice": config.AZURE_TTS_VOICE,
+        "region": "xfyun",
+        "voice": config.XFYUN_TTS_VOICE,
         "chatModel": config.QWEN_CHAT_MODEL,
         # 具体走哪个引擎 —— 「为什么 transcription 是 true」不用再去猜配置
         "transcribeEngine": transcribe_engine,
@@ -710,7 +878,7 @@ def health() -> dict:
 
 @router.post("/tts")
 def tts_endpoint(body: TtsIn):
-    return {"url": azure_tts(body.text)}
+    return {"url": xfyun_tts(body.text)}
 
 
 @router.post("/transcribe")
@@ -726,7 +894,7 @@ def chat_endpoint(body: ChatIn):
 
 @router.post("/evaluate")
 def evaluate_endpoint(body: EvaluateIn):
-    return {"result": tencent_evaluate(body.text, body.audio)}
+    return {"result": xfyun_evaluate(body.text, body.audio)}
 
 
 # 老网页里的 `url` 就是这个前缀（`/generated-tts/<sha>.mp3`），路径不能改。

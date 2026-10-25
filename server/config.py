@@ -105,29 +105,22 @@ TTS_DIR = _path("TTS_DIR", ROOT / "data" / "tts")
 # 有自己的清理节奏，混在一起会让「谁在漏文件」变得难查。
 TMP_DIR = _path("ENGLISH_TMP_DIR", ROOT / "data" / "tmp")
 
-# 微软语音合成。voice 换成 en-US-* 就会变成美音，这一项是孩子听得最多的。
-#
-# 2026-10-23 定版（靖哥哥问"发音怪"之后）：**en-GB-SoniaNeural · 语速 -5% · 不动音调**。
-#   · 英式：教材是译林版，配套录音就是英音，示范必须同腔调，否则孩子跟着学歪；
-#   · Sonia：微软主流的英式女声朗读音色，教材/纪录片那类听感，最稳；
-#   · -5%：比正常略慢一点点，够跟读又不至于拖成"念单词"；
-#   · pitch 留空：旧配置的 `+1st`（升 1 个半音）是听感"发尖/电子"的主因，已去掉。
-# 想听别的组合：`docker exec nuo-study python3 /tmp/voice_samples.py` 生成
-# `/english/voice-samples/` 试听页。
-AZURE_SPEECH_KEY = env("AZURE_SPEECH_KEY", "")
-AZURE_SPEECH_REGION = env("AZURE_SPEECH_REGION", "eastasia")
-AZURE_TTS_VOICE = env("AZURE_TTS_VOICE", "en-GB-SoniaNeural")
-# ⚠️ 这两项用 `_env_opt` 而不是 `env()`：`env()` 把「空值」当「没设置」，
-#    而这里**留空是有意义的**（= 不用 prosody，输出原生语速/音调）。
-#    用 env() 的话 .env 里写 `AZURE_TTS_PITCH=` 会被静默忽略、继续用默认值 ——
-#    那种"改了配置却没生效"的坑，排查成本远高于多写一个函数。
-AZURE_TTS_RATE = _env_opt("AZURE_TTS_RATE", "-5%")
-AZURE_TTS_PITCH = _env_opt("AZURE_TTS_PITCH", "")
-
-# 腾讯智聆：跟读评测（WebSocket 流式）
-TENCENT_APP_ID = env("TENCENT_APP_ID", "")
-TENCENT_SECRET_ID = env("TENCENT_SECRET_ID", "")
-TENCENT_SECRET_KEY = env("TENCENT_SECRET_KEY", "")
+# 讯飞开放平台（2026-10-25 起替换 Azure TTS 与腾讯智聆评测）。
+# 凭据与国美云 xiaokouyu 是**同一个应用**（APPID 2016284b）：
+#   · 在线语音合成 → 点读 / 对话朗读（wss://tts-api.xfyun.cn/v2/tts）
+#   · 语音评测流式版 → 跟读打分（wss://ise-api.xfyun.cn/v2/open-ise）
+# ⚠️ TTS 的鉴权与另外两个不同：WebSocket 握手头 `x-api-key` 传 **APIPassword**，
+#    APIKey/APISecret 只给评测用。三个服务缺哪个，对应功能灰置，互不影响。
+# ⚠️ 该应用目前只授权了 xiaoyan 一个合成发音人（实测 x4_enus_lucy_education /
+#    x_Catherine / x_John 均报 11200 licc failed）。想换英语发音人要先在讯飞
+#    控制台「发音人授权管理」添加，改这里即可 —— 缓存键含 voice，不会串音。
+XFYUN_APPID = env("XFYUN_APPID", "")
+XFYUN_APIKEY = env("XFYUN_APIKEY", "")
+XFYUN_APISECRET = env("XFYUN_APISECRET", "")
+XFYUN_APIPASSWORD = env("XFYUN_APIPASSWORD", "")
+XFYUN_TTS_VOICE = env("XFYUN_TTS_VOICE", "xiaoyan")
+# 语速 0~100，50 = 正常。留空有意义（= 用服务端默认），所以走 _env_opt。
+XFYUN_TTS_SPEED = _env_opt("XFYUN_TTS_SPEED", "50")
 
 # 千问：**只**负责生成陪练对话文本（阿里云百炼的 OpenAI 兼容接口）
 QWEN_API_KEY = env("QWEN_API_KEY", "")
@@ -169,7 +162,13 @@ OPENAI_TRANSCRIBE_MODEL = env("OPENAI_TRANSCRIBE_MODEL", "gpt-transcribe")
 
 # 容器里就是 `ffmpeg`（deploy/Dockerfile 会装）；Windows 本机没装的话，
 # 四件事里只有「跟读评测」不可用，另外三个照常。
+# 本机部署（2026-10-25）：用 imageio-ffmpeg 自带的静态版，拷在 .tools/ 下。
+# 相对路径以**项目根**为基准解析 —— shutil.which 对相对路径是按 cwd 找的，
+# 换个目录启动服务就会「明明配了却说找不到」。
 FFMPEG_BIN = env("FFMPEG_BIN", "ffmpeg")
+_ffmpeg_local = ROOT / FFMPEG_BIN   # 绝对路径时 pathlib 会原样保留
+if FFMPEG_BIN not in ("ffmpeg", "ffprobe") and _ffmpeg_local.exists():
+    FFMPEG_BIN = str(_ffmpeg_local)
 
 # ---------------------------------------------------------------- 队列
 WORKER_CONCURRENCY = int(env("WORKER_CONCURRENCY", "1"))   # 实测会撞 429，默认单并发

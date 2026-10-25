@@ -18,7 +18,7 @@
   - **同步课程**：课文逐句点读（服务端 TTS，英式发音）+ 40 段教材配套原音
   - **单词卡片**：159 个词，音标 / 释义 / 例句 / 记忆提示，翻面 + 「认识 / 再练一次」
   - **句型挑战**：64 道题，答错标红 + 正确项标绿 + 中文解析，错题自动进错题本
-  - **AI 口语**：按住跟读 → 腾讯智聆逐词批改（总分 / 准确 / 流利 / 完整）；
+  - **AI 口语**：按住跟读 → 讯飞语音评测逐词批改（总分 / 准确 / 流利 / 完整）；
     按住说话 → 转写 → 千问陪练 → 语音回复
   - **错题本 / 学习报告**：报告读服务端汇总，和网页、家长手机是同一份
 - 顶栏可收起（做题时多给内容 60dp），侧栏在 8 寸屏上 7 项全部首屏可见
@@ -62,15 +62,14 @@ FAMILY_TOKEN=改成你自己的随机串      # 客户端连服务端用的令�
 按需填的能力（不填也能跑，只是对应功能不可用，`/api/health` 会如实报 false）：
 
 ```ini
-# 语音合成（课文点读 / 示范音）—— 微软 Azure
-AZURE_SPEECH_KEY=
-AZURE_SPEECH_REGION=eastasia
-AZURE_TTS_VOICE=en-GB-SoniaNeural
-
-# 跟读评测 —— 腾讯智聆
-TENCENT_APP_ID=
-TENCENT_SECRET_ID=
-TENCENT_SECRET_KEY=
+# 点读 TTS + 跟读评测 —— 讯飞开放平台（与国美云 xiaokouyu 同一应用）
+# TTS 走 x-api-key（APIPassword）；评测走 APIKey+APISecret 签名
+XFYUN_APPID=
+XFYUN_APIKEY=
+XFYUN_APISECRET=
+XFYUN_APIPASSWORD=
+XFYUN_TTS_VOICE=xiaoyan
+XFYUN_TTS_SPEED=50
 
 # 陪练对话 + 语音转写 —— 阿里云百炼（千问）
 QWEN_API_KEY=
@@ -221,7 +220,7 @@ python tools/enrich_curriculum.py                 # 补音标/例句/练习题�
 ## 已知限制
 
 - **教材只覆盖三年级上册**（苏教译林 2024 秋），下册和语文数学的内容层还没做深
-- **跟读评测需要腾讯智聆**，不配 key 时按钮是灰的（界面上会如实写）
+- **跟读评测需要讯飞语音评测**（XFYUN_APPID/APIKEY/APISECRET），不配 key 时按钮是灰的（界面上会如实写）
 - **家长端的「作业」链路**依赖识别 Worker，模型密钥要自己配
 - 孩子端 App **故意不要相机权限**（拍照是家长端的事），只在朗读题时申请录音
 - `debuggable` 的包**没法 AOT**，性能档请装 `perf`

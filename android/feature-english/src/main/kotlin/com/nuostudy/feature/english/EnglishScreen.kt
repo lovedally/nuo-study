@@ -914,7 +914,7 @@ fun EnglishScreen(
                 modifier = Modifier.padding(vertical = 10.dp),
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // 示范音走服务端 Azure 合成（真实发音，不是设备 TTS）：
+                // 示范音走服务端讯飞合成（真实发音，不是设备 TTS）：
                 // 孩子要模仿的是教材那套英式发音，设备自带的合成音会把他带偏。
                 OutlinedButton(
                     onClick = onSpeak,
@@ -922,7 +922,7 @@ fun EnglishScreen(
                 ) { Text("🔊 听示范") }
                 if (vm.healthLoaded && !vm.services.tencentSoe) {
                     Text(
-                        "服务端没配智聆，评分不可用",
+                        "服务端没配讯飞评测，评分不可用",
                         color = red,
                         style = MaterialTheme.typography.labelSmall,
                         modifier = Modifier.padding(start = 10.dp),
